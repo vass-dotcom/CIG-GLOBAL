@@ -7,126 +7,198 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
 :root{--gold:#c9a84c;--dark:#0a0e1a;--navy:#0d1b3e;}
-body{font-family:'Segoe UI',sans-serif;color:#fff;background:var(--dark);}
+body{font-family:'Segoe UI',sans-serif;color:#fff;background:var(--dark);cursor:none;}
 html{scroll-behavior:smooth;}
-nav{position:fixed;top:0;width:100%;background:rgba(10,14,26,0.97);backdrop-filter:blur(12px);padding:14px 48px;display:flex;justify-content:space-between;align-items:center;z-index:1000;border-bottom:1px solid rgba(201,168,76,0.2);}
+
+/* CUSTOM CURSOR */
+.cursor{position:fixed;width:12px;height:12px;background:var(--gold);border-radius:50%;pointer-events:none;z-index:99999;transform:translate(-50%,-50%);transition:transform 0.1s,background 0.2s;mix-blend-mode:difference;}
+.cursor-follower{position:fixed;width:36px;height:36px;border:1.5px solid var(--gold);border-radius:50%;pointer-events:none;z-index:99998;transform:translate(-50%,-50%);transition:all 0.12s ease;opacity:0.6;}
+.cursor.click{transform:translate(-50%,-50%) scale(2);}
+.cursor-follower.click{transform:translate(-50%,-50%) scale(0.5);}
+
+/* SCROLL PROGRESS BAR */
+.scroll-progress{position:fixed;top:0;left:0;height:2px;background:linear-gradient(90deg,var(--gold),#f5e070);z-index:9999;width:0%;transition:width 0.1s;}
+
+/* NAV */
+nav{position:fixed;top:0;width:100%;background:rgba(10,14,26,0.97);backdrop-filter:blur(16px);padding:14px 48px;display:flex;justify-content:space-between;align-items:center;z-index:1000;border-bottom:1px solid rgba(201,168,76,0.15);transition:all 0.3s;}
+nav.scrolled{padding:10px 48px;background:rgba(10,14,26,0.99);}
 .logo{display:flex;align-items:center;gap:12px;}
-.logo img{height:50px;border-radius:6px;}
-.logo-text{font-size:0.85em;font-weight:700;color:#fff;letter-spacing:0.04em;line-height:1.3;}
+.logo img{height:64px;border-radius:6px;transition:transform 0.3s;}
+.logo img:hover{transform:scale(1.05);}
+.logo-text{font-size:0.95em;font-weight:700;color:#fff;letter-spacing:0.04em;line-height:1.4;}
 .logo-text span{color:var(--gold);}
 .nav-links{display:flex;gap:24px;list-style:none;}
-.nav-links a{text-decoration:none;color:#aaa;font-size:0.82em;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;transition:color 0.2s;}
+.nav-links a{text-decoration:none;color:#aaa;font-size:0.82em;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;transition:color 0.2s;position:relative;}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;background:var(--gold);transition:width 0.3s;}
 .nav-links a:hover{color:var(--gold);}
-.nav-cta{padding:8px 20px;background:linear-gradient(135deg,var(--gold),#e8c060);color:#0a0e1a;font-weight:700;border-radius:5px;text-decoration:none;font-size:0.82em;}
+.nav-links a:hover::after{width:100%;}
+.nav-cta{padding:8px 20px;background:linear-gradient(135deg,var(--gold),#e8c060);color:#000!important;font-weight:700;border-radius:5px;text-decoration:none;font-size:0.82em;transition:transform 0.2s,box-shadow 0.2s;}
+.nav-cta:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(201,168,76,0.35);}
+.nav-cta::after{display:none!important;}
+
+/* HERO */
 .hero{min-height:100vh;position:relative;display:flex;align-items:center;justify-content:center;text-align:center;padding:140px 40px 80px;overflow:hidden;}
-.hero-video{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:0;opacity:0.95;}
+.hero-video{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:0;opacity:0.45;}
 .hero-overlay{position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(135deg,rgba(10,14,26,0.88),rgba(13,27,62,0.78));z-index:1;}
-.hero-content{position:relative;z-index:2;max-width:920px;}
-.hero-badge{display:inline-block;padding:6px 22px;border:1px solid var(--gold);border-radius:50px;font-size:0.75em;color:var(--gold);letter-spacing:0.14em;text-transform:uppercase;margin-bottom:28px;}
-.hero h1{font-size:1.5em;font-weight:900;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin-bottom:20px;}
-.hero h2{font-size:2.8em;font-weight:800;line-height:1.2;margin-bottom:20px;color:#fff;}
+.hero-particles{position:absolute;top:0;left:0;width:100%;height:100%;z-index:2;pointer-events:none;}
+.hero-content{position:relative;z-index:3;max-width:920px;}
+.hero-badge{display:inline-block;padding:6px 22px;border:1px solid var(--gold);border-radius:50px;font-size:0.75em;color:var(--gold);letter-spacing:0.14em;text-transform:uppercase;margin-bottom:28px;animation:fadeInDown 1s ease both;}
+.hero h1{font-size:1.5em;font-weight:900;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin-bottom:20px;animation:fadeInDown 1s 0.2s ease both;}
+.hero h2{font-size:2.8em;font-weight:800;line-height:1.2;margin-bottom:20px;color:#fff;animation:fadeInUp 1s 0.4s ease both;}
 .hero h2 span{background:linear-gradient(90deg,var(--gold),#f5e070);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
-.hero p{font-size:1.05em;color:#a0b0c8;max-width:680px;margin:0 auto 36px;line-height:1.8;}
-.hero-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;}
-.btn-primary{padding:14px 36px;background:linear-gradient(135deg,var(--gold),#e8c060);color:#0a0e1a;font-weight:700;border-radius:6px;text-decoration:none;font-size:0.95em;transition:transform 0.2s,box-shadow 0.2s;}
-.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(201,168,76,0.4);}
-.btn-outline{padding:14px 36px;border:1px solid rgba(201,168,76,0.5);color:var(--gold);font-weight:600;border-radius:6px;text-decoration:none;font-size:0.95em;transition:all 0.2s;}
-.btn-outline:hover{background:rgba(201,168,76,0.1);}
-.stats-bar{display:flex;justify-content:center;flex-wrap:wrap;margin-top:70px;border-top:1px solid rgba(255,255,255,0.08);padding-top:44px;}
+.hero p{font-size:1.05em;color:#a0b0c8;max-width:680px;margin:0 auto 36px;line-height:1.8;animation:fadeInUp 1s 0.6s ease both;}
+.hero-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;animation:fadeInUp 1s 0.8s ease both;}
+.btn-primary{padding:14px 36px;background:linear-gradient(135deg,var(--gold),#e8c060);color:#0a0e1a;font-weight:700;border-radius:6px;text-decoration:none;font-size:0.95em;transition:transform 0.2s,box-shadow 0.2s;position:relative;overflow:hidden;}
+.btn-primary::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.3),transparent);transition:left 0.5s;}
+.btn-primary:hover::before{left:100%;}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(201,168,76,0.45);}
+.btn-outline{padding:14px 36px;border:1px solid rgba(201,168,76,0.5);color:var(--gold);font-weight:600;border-radius:6px;text-decoration:none;font-size:0.95em;transition:all 0.3s;backdrop-filter:blur(8px);}
+.btn-outline:hover{background:rgba(201,168,76,0.1);border-color:var(--gold);transform:translateY(-3px);}
+.stats-bar{display:flex;justify-content:center;flex-wrap:wrap;margin-top:70px;border-top:1px solid rgba(255,255,255,0.08);padding-top:44px;animation:fadeInUp 1s 1s ease both;}
 .stat{flex:1;min-width:150px;text-align:center;padding:0 24px;border-right:1px solid rgba(255,255,255,0.08);}
 .stat:last-child{border-right:none;}
 .stat-num{font-size:2.4em;font-weight:900;color:var(--gold);}
 .stat-label{font-size:0.78em;color:#6080a0;text-transform:uppercase;letter-spacing:0.07em;margin-top:5px;}
+
+/* SCROLL REVEAL */
+.reveal{opacity:0;transform:translateY(40px);transition:opacity 0.8s ease,transform 0.8s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+.reveal-left{opacity:0;transform:translateX(-40px);transition:opacity 0.8s ease,transform 0.8s ease;}
+.reveal-left.visible{opacity:1;transform:translateX(0);}
+.reveal-right{opacity:0;transform:translateX(40px);transition:opacity 0.8s ease,transform 0.8s ease;}
+.reveal-right.visible{opacity:1;transform:translateX(0);}
+
+/* SECTIONS */
 section{padding:96px 64px;}
 .section-tag{font-size:0.73em;color:var(--gold);text-transform:uppercase;letter-spacing:0.16em;margin-bottom:12px;font-weight:700;}
 h2.section-title{font-size:2.3em;font-weight:800;margin-bottom:18px;line-height:1.2;}
 h2.section-title .accent{background:linear-gradient(90deg,var(--gold),#f5e070);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
 .section-sub{color:#7090b0;font-size:1em;line-height:1.8;max-width:680px;margin-bottom:12px;}
 .divider{width:56px;height:3px;background:linear-gradient(90deg,var(--gold),#f5e070);border-radius:2px;margin:20px 0 40px;}
+
+/* VISION */
 .vision{background:#060a14;}
 .vision-inner{display:flex;gap:64px;align-items:center;flex-wrap:wrap;margin-top:48px;}
 .vision-text{flex:1;min-width:300px;}
 .vision-text p{color:#7090b0;line-height:1.8;margin-bottom:16px;font-size:0.95em;}
-.vision-img{flex:1;min-width:300px;border-radius:18px;overflow:hidden;border:1px solid rgba(201,168,76,0.15);}
-.vision-img img{width:100%;height:380px;object-fit:cover;display:block;}
+.vision-img{flex:1;min-width:300px;border-radius:18px;overflow:hidden;border:1px solid rgba(201,168,76,0.15);position:relative;}
+.vision-img img{width:100%;height:380px;object-fit:cover;display:block;transition:transform 0.6s ease;}
+.vision-img:hover img{transform:scale(1.05);}
+.vision-img::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(201,168,76,0.1),transparent);pointer-events:none;}
+
+/* VERTICALS */
 .verticals{background:var(--dark);}
 .verticals-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:28px;margin-top:52px;}
-.vertical-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:18px;overflow:hidden;transition:all 0.3s;}
-.vertical-card:hover{border-color:rgba(201,168,76,0.35);transform:translateY(-5px);box-shadow:0 20px 48px rgba(0,0,0,0.35);}
-.vertical-img{width:100%;height:200px;object-fit:cover;display:block;}
+.vertical-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:18px;overflow:hidden;transition:all 0.4s cubic-bezier(0.175,0.885,0.32,1.275);position:relative;}
+.vertical-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(201,168,76,0.05),transparent);opacity:0;transition:opacity 0.3s;z-index:1;pointer-events:none;}
+.vertical-card:hover{border-color:rgba(201,168,76,0.4);transform:translateY(-8px);box-shadow:0 24px 56px rgba(0,0,0,0.4),0 0 0 1px rgba(201,168,76,0.1);}
+.vertical-card:hover::before{opacity:1;}
+.vertical-img{width:100%;height:200px;object-fit:cover;display:block;transition:transform 0.6s ease;}
+.vertical-card:hover .vertical-img{transform:scale(1.05);}
 .vertical-img-placeholder{width:100%;height:200px;display:flex;align-items:center;justify-content:center;font-size:3.5em;background:linear-gradient(135deg,rgba(201,168,76,0.06),rgba(255,255,255,0.02));}
-.vertical-body{padding:28px;}
+.vertical-body{padding:28px;position:relative;z-index:2;}
 .vertical-body h3{font-size:1.15em;font-weight:700;margin-bottom:10px;color:#e0e8f0;}
 .vertical-body p{font-size:0.87em;color:#6080a0;line-height:1.7;margin-bottom:16px;}
 .vertical-body ul{list-style:none;margin-bottom:16px;}
 .vertical-body ul li{font-size:0.84em;color:#7090a8;padding:5px 0;border-bottom:1px solid rgba(255,255,255,0.04);display:flex;align-items:flex-start;gap:8px;}
 .vertical-body ul li::before{content:'›';color:var(--gold);font-weight:700;flex-shrink:0;}
 .tag{display:inline-block;padding:4px 14px;background:rgba(201,168,76,0.1);border:1px solid rgba(201,168,76,0.25);border-radius:20px;font-size:0.74em;color:var(--gold);}
+
+/* TOURISM */
 .tourism{background:#060a14;}
 .tourism-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px;margin-top:52px;}
-.tourism-card{border-radius:18px;overflow:hidden;position:relative;}
-.tourism-card img{width:100%;height:280px;object-fit:cover;display:block;transition:transform 0.5s;}
-.tourism-card:hover img{transform:scale(1.06);}
-.tourism-overlay{position:absolute;bottom:0;left:0;right:0;padding:28px;background:linear-gradient(transparent,rgba(0,0,0,0.88));}
+.tourism-card{border-radius:18px;overflow:hidden;position:relative;cursor:pointer;}
+.tourism-card img{width:100%;height:280px;object-fit:cover;display:block;transition:transform 0.6s ease;}
+.tourism-card:hover img{transform:scale(1.1);}
+.tourism-overlay{position:absolute;bottom:0;left:0;right:0;padding:28px;background:linear-gradient(transparent,rgba(0,0,0,0.92));transform:translateY(10px);transition:transform 0.3s ease;}
+.tourism-card:hover .tourism-overlay{transform:translateY(0);}
 .tourism-overlay h3{font-size:1.25em;font-weight:700;margin-bottom:6px;}
 .tourism-overlay p{font-size:0.85em;color:#b0bcc8;line-height:1.6;}
+
+/* ENERGY */
 .energy{background:var(--dark);}
 .energy-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:22px;margin-top:52px;}
-.energy-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:14px;padding:28px;transition:all 0.3s;}
-.energy-card:hover{border-color:rgba(201,168,76,0.3);transform:translateY(-3px);}
+.energy-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:14px;padding:28px;transition:all 0.3s;position:relative;overflow:hidden;}
+.energy-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--gold),#f5e070);transform:scaleX(0);transition:transform 0.3s ease;}
+.energy-card:hover{border-color:rgba(201,168,76,0.3);transform:translateY(-4px);box-shadow:0 16px 40px rgba(0,0,0,0.3);}
+.energy-card:hover::after{transform:scaleX(1);}
 .energy-icon{font-size:2.2em;margin-bottom:14px;}
 .energy-card h3{font-size:1.05em;font-weight:700;margin-bottom:10px;color:#e0e8f0;}
 .energy-card p{font-size:0.86em;color:#6080a0;line-height:1.7;}
+
+/* SMART CITY */
 .smartcity{background:#060a14;}
 .smartcity-inner{display:flex;gap:64px;align-items:center;flex-wrap:wrap;margin-top:52px;}
-.smartcity-img{flex:1;min-width:300px;border-radius:18px;overflow:hidden;border:1px solid rgba(201,168,76,0.15);}
-.smartcity-img img{width:100%;height:380px;object-fit:cover;display:block;}
+.smartcity-img{flex:1;min-width:300px;border-radius:18px;overflow:hidden;border:1px solid rgba(201,168,76,0.15);position:relative;}
+.smartcity-img img{width:100%;height:380px;object-fit:cover;display:block;transition:transform 0.6s ease;}
+.smartcity-img:hover img{transform:scale(1.05);}
 .smartcity-text{flex:1;min-width:300px;}
 .smartcity-text h3{font-size:1.4em;font-weight:700;margin-bottom:16px;color:#e0e8f0;}
 .smartcity-text p{color:#7090b0;line-height:1.8;margin-bottom:14px;font-size:0.95em;}
 .pillars{list-style:none;margin-top:16px;}
-.pillars li{padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.05);font-size:0.88em;color:#8090a8;display:flex;align-items:center;gap:10px;}
+.pillars li{padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.05);font-size:0.88em;color:#8090a8;display:flex;align-items:center;gap:10px;transition:color 0.2s,padding-left 0.2s;}
+.pillars li:hover{color:#c0d0e0;padding-left:8px;}
 .pillars li::before{content:'◆';color:var(--gold);font-size:0.6em;flex-shrink:0;}
+
+/* PRESENCE */
 .presence{background:var(--dark);}
 .presence-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:22px;margin-top:52px;}
-.region-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:14px;overflow:hidden;}
+.region-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:14px;overflow:hidden;transition:all 0.3s;}
+.region-card:hover{border-color:rgba(201,168,76,0.3);transform:translateY(-4px);box-shadow:0 16px 40px rgba(0,0,0,0.3);}
 .region-placeholder{width:100%;height:150px;display:flex;align-items:center;justify-content:center;font-size:3em;background:rgba(255,255,255,0.02);}
 .region-body{padding:22px;}
 .region-body h3{font-size:0.95em;font-weight:700;color:var(--gold);margin-bottom:14px;text-transform:uppercase;letter-spacing:0.06em;}
 .country-list{list-style:none;}
-.country-list li{padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.04);font-size:0.84em;color:#8090b0;display:flex;align-items:center;gap:8px;}
+.country-list li{padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.04);font-size:0.84em;color:#8090b0;display:flex;align-items:center;gap:8px;transition:color 0.2s,padding-left 0.2s;}
+.country-list li:hover{color:#c0d0e0;padding-left:6px;}
 .country-list li:last-child{border-bottom:none;}
 .country-list li::before{content:'›';color:var(--gold);font-weight:700;}
+
+/* VALUE */
 .value{background:#060a14;}
 .value-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:22px;margin-top:52px;}
-.value-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:14px;padding:28px;text-align:center;transition:all 0.3s;}
-.value-card:hover{border-color:rgba(201,168,76,0.3);transform:translateY(-3px);}
-.value-icon{font-size:2.4em;margin-bottom:14px;}
+.value-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:14px;padding:28px;text-align:center;transition:all 0.4s cubic-bezier(0.175,0.885,0.32,1.275);position:relative;overflow:hidden;}
+.value-card::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(circle,rgba(201,168,76,0.05) 0%,transparent 70%);opacity:0;transition:opacity 0.4s;}
+.value-card:hover{border-color:rgba(201,168,76,0.35);transform:translateY(-6px);box-shadow:0 20px 48px rgba(0,0,0,0.35);}
+.value-card:hover::before{opacity:1;}
+.value-icon{font-size:2.4em;margin-bottom:14px;transition:transform 0.3s;}
+.value-card:hover .value-icon{transform:scale(1.2) rotate(5deg);}
 .value-card h3{font-size:1em;font-weight:700;margin-bottom:10px;color:#e0e8f0;}
 .value-card p{font-size:0.84em;color:#6080a0;line-height:1.7;}
+
+/* HQ */
 .hq{background:var(--dark);}
 .hq-inner{display:flex;gap:64px;align-items:center;flex-wrap:wrap;margin-top:52px;}
-.hq-img{flex:1;min-width:300px;border-radius:18px;overflow:hidden;border:1px solid rgba(201,168,76,0.2);}
-.hq-img img{width:100%;height:420px;object-fit:cover;display:block;}
+.hq-img{flex:1;min-width:300px;border-radius:18px;overflow:hidden;border:1px solid rgba(201,168,76,0.2);position:relative;}
+.hq-img img{width:100%;height:420px;object-fit:cover;display:block;transition:transform 0.6s ease;}
+.hq-img:hover img{transform:scale(1.04);}
 .hq-text{flex:1;min-width:300px;}
 .hq-text h3{font-size:1.4em;font-weight:700;margin-bottom:16px;color:#e0e8f0;}
 .hq-text p{color:#7090b0;line-height:1.8;font-size:0.95em;margin-bottom:14px;}
 .hq-info{display:flex;flex-direction:column;gap:12px;margin-top:24px;}
-.hq-info-item{display:flex;align-items:center;gap:12px;font-size:0.88em;color:#8090a8;}
+.hq-info-item{display:flex;align-items:center;gap:12px;font-size:0.88em;color:#8090a8;padding:10px 14px;border-radius:8px;transition:background 0.2s;}
+.hq-info-item:hover{background:rgba(255,255,255,0.03);}
 .hq-info-item strong{color:#c0d0e0;}
+
+/* CONTACT */
 .contact{background:linear-gradient(135deg,#060a14,var(--navy));}
 .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;margin-top:52px;}
 .contact-info h3{font-size:1.1em;font-weight:700;margin-bottom:24px;color:#e0e0f0;}
-.contact-item{display:flex;align-items:flex-start;gap:14px;margin-bottom:20px;}
+.contact-item{display:flex;align-items:flex-start;gap:14px;margin-bottom:20px;padding:12px;border-radius:8px;transition:background 0.2s;}
+.contact-item:hover{background:rgba(255,255,255,0.03);}
 .contact-icon{font-size:1.3em;margin-top:2px;}
 .contact-item p{color:#6080a0;font-size:0.9em;line-height:1.8;}
 .contact-item strong{color:#c0d0e0;}
-.form input,.form select,.form textarea{width:100%;padding:13px 16px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:8px;color:#fff;font-size:0.9em;margin-bottom:14px;outline:none;transition:border-color 0.2s;font-family:'Segoe UI',sans-serif;}
-.form input:focus,.form select:focus,.form textarea:focus{border-color:var(--gold);}
+.form input,.form select,.form textarea{width:100%;padding:13px 16px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:8px;color:#fff;font-size:0.9em;margin-bottom:14px;outline:none;transition:border-color 0.2s,background 0.2s,transform 0.2s;font-family:'Segoe UI',sans-serif;}
+.form input:focus,.form select:focus,.form textarea:focus{border-color:var(--gold);background:rgba(255,255,255,0.07);transform:translateY(-1px);}
 .form select option{background:#0d1b3e;}
 .form textarea{min-height:110px;resize:vertical;}
-.submit-btn{width:100%;padding:15px;background:linear-gradient(135deg,var(--gold),#e8c060);color:#0a0e1a;font-weight:800;font-size:1em;border:none;border-radius:8px;cursor:pointer;transition:opacity 0.2s;}
-.submit-btn:hover{opacity:0.9;}
+.submit-btn{width:100%;padding:15px;background:linear-gradient(135deg,var(--gold),#e8c060);color:#0a0e1a;font-weight:800;font-size:1em;border:none;border-radius:8px;cursor:none;transition:all 0.3s;position:relative;overflow:hidden;}
+.submit-btn::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.3),transparent);transition:left 0.5s;}
+.submit-btn:hover::before{left:100%;}
+.submit-btn:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(201,168,76,0.45);}
+
+/* FOOTER */
 footer{background:#03060e;padding:44px 64px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px;border-top:1px solid rgba(201,168,76,0.12);}
 .footer-left{display:flex;align-items:center;gap:14px;}
 .footer-left img{height:44px;border-radius:5px;}
@@ -136,11 +208,30 @@ footer nav{position:static;background:none;backdrop-filter:none;border:none;padd
 footer nav a{color:#405060;font-size:0.8em;text-decoration:none;transition:color 0.2s;}
 footer nav a:hover{color:var(--gold);}
 .footer-copy{font-size:0.78em;color:#2a3a4a;width:100%;text-align:center;padding-top:20px;border-top:1px solid rgba(255,255,255,0.04);margin-top:8px;}
+
+/* ANIMATIONS */
+@keyframes fadeInDown{from{opacity:0;transform:translateY(-30px);}to{opacity:1;transform:translateY(0);}}
+@keyframes fadeInUp{from{opacity:0;transform:translateY(30px);}to{opacity:1;transform:translateY(0);}}
+@keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-10px);}}
+@keyframes pulse{0%,100%{opacity:0.4;transform:scale(1);}50%{opacity:0.8;transform:scale(1.05);}}
+
+/* PARTICLES */
+.particle{position:absolute;border-radius:50%;background:var(--gold);opacity:0.15;animation:float 6s ease-in-out infinite;}
+
+/* GLOWING GOLD LINE */
+.gold-line{width:100%;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:0;opacity:0.3;}
 </style>
 </head>
 <body>
 
-<nav>
+<!-- CUSTOM CURSOR -->
+<div class="cursor" id="cursor"></div>
+<div class="cursor-follower" id="cursorFollower"></div>
+
+<!-- SCROLL PROGRESS -->
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<nav id="navbar">
   <div class="logo">
     <img src="logo.png" alt="CIG Logo" onerror="this.style.display='none'">
     <div class="logo-text"><span>Coordinate</span> International Global</div>
@@ -161,403 +252,9 @@ footer nav a:hover{color:var(--gold);}
     <source src="video.mp4" type="video/mp4">
   </video>
   <div class="hero-overlay"></div>
+  <canvas class="hero-particles" id="particleCanvas"></canvas>
   <div class="hero-content">
     <div class="hero-badge">🌐 Multinational · 4 Continents · Kuala Lumpur</div>
     <h1>Coordinate International Global</h1>
     <h2>Building Tomorrow's<br><span>Global Infrastructure</span></h2>
-    <p>CIG drives sustainable transformation across Asia, the Americas, and Africa with forward-looking investments in energy, smart urban ecosystems, and tourism innovation.</p>
-    <div class="hero-btns">
-      <a href="#verticals" class="btn-primary">Explore Our Projects →</a>
-      <a href="#contact" class="btn-outline">Partner With Us</a>
-    </div>
-    <div class="stats-bar">
-      <div class="stat"><div class="stat-num">150B</div><div class="stat-label">Assets Under Development</div></div>
-      <div class="stat"><div class="stat-num">4</div><div class="stat-label">Continents</div></div>
-      <div class="stat"><div class="stat-num">20+</div><div class="stat-label">Countries</div></div>
-      <div class="stat"><div class="stat-num">8</div><div class="stat-label">Key Sectors</div></div>
-    </div>
-  </div>
-</section>
-
-<section class="vision" id="vision">
-  <div class="section-tag">Strategic Vision</div>
-  <h2 class="section-title">Driving the Next Era of<br><span class="accent">Global Development</span></h2>
-  <div class="divider"></div>
-  <div class="vision-inner">
-    <div class="vision-text">
-      <p>CIG accelerates transformative projects worldwide, shaping the future of smart cities, clean energy, and resilient infrastructure.</p>
-      <p>Powered by market intelligence and a worldwide network of partners, we deliver sustainable impact — from South America's energy corridors to East Africa's rising smart city ecosystems.</p>
-      <p>Our integrated approach combines deep sector expertise, government alignment, and blended finance models to unlock high-growth opportunities across emerging markets.</p>
-      <br>
-      <a href="#verticals" class="btn-primary">Explore Our Portfolio →</a>
-    </div>
-    <div class="vision-img">
-      <img src="smartcity.jpg" alt="CIG Global Vision" onerror="this.src='https://images.unsplash.com/photo-1573804633927-bfcbcd909acd?w=800'">
-    </div>
-  </div>
-</section>
-
-<section class="verticals" id="verticals">
-  <div class="section-tag">Verticals of Innovation</div>
-  <h2 class="section-title">CIG Invests Across<br><span class="accent">High-Growth Sectors</span></h2>
-  <div class="divider"></div>
-  <p class="section-sub">CIG invests across high-growth sectors, turning global challenges into scalable, future-ready solutions.</p>
-  <div class="verticals-grid">
-
-    <div class="vertical-card">
-      <img src="zanzibar.avif" alt="Tourism" class="vertical-img" onerror="this.outerHTML='<div class=\'vertical-img-placeholder\'>✈️</div>'">
-      <div class="vertical-body">
-        <h3>🌍 Global Tourism Destinations</h3>
-        <p>Capturing long-term growth in luxury, experiential, and sustainable travel.</p>
-        <ul>
-          <li>Premium eco-resorts and coastal destinations</li>
-          <li>Integrated tourism corridors</li>
-          <li>Public–private partnerships</li>
-          <li>Cultural preservation models</li>
-        </ul>
-        <span class="tag">Zanzibar · Guatemala · Venezuela</span>
-      </div>
-    </div>
-
-    <div class="vertical-card">
-      <img src="smartcity.jpg" alt="Smart City" class="vertical-img" onerror="this.outerHTML='<div class=\'vertical-img-placeholder\'>🏙️</div>'">
-      <div class="vertical-body">
-        <h3>🏙️ Smart City Development</h3>
-        <p>Building future-ready cities through integrated digital infrastructure and sustainable design.</p>
-        <ul>
-          <li>Intelligent mobility systems</li>
-          <li>Renewable-powered districts</li>
-          <li>Digital governance platforms</li>
-          <li>Smart grids & IoT networks</li>
-        </ul>
-        <span class="tag">Africa · Asia · Americas</span>
-      </div>
-    </div>
-
-    <div class="vertical-card">
-      <img src="petrole.avif" alt="Energy" class="vertical-img" onerror="this.outerHTML='<div class=\'vertical-img-placeholder\'>⚡</div>'">
-      <div class="vertical-body">
-        <h3>⚡ Sustainable Energy</h3>
-        <p>Accelerating the global transition to clean, reliable, and utility-scale renewable energy.</p>
-        <ul>
-          <li>Utility-scale solar farms</li>
-          <li>Hydro-electric generation</li>
-          <li>Hybrid renewable systems</li>
-          <li>Energy storage technologies</li>
-        </ul>
-        <span class="tag">Indonesia · Gabon · Africa</span>
-      </div>
-    </div>
-
-    <div class="vertical-card">
-      <img src="maritime.png" alt="Maritime" class="vertical-img" onerror="this.outerHTML='<div class=\'vertical-img-placeholder\'>🚢</div>'">
-      <div class="vertical-body">
-        <h3>🚢 Maritime Transport</h3>
-        <p>International freight fleet and port logistics connecting major world ports.</p>
-        <ul>
-          <li>Global freight operations</li>
-          <li>Port logistics management</li>
-          <li>Supply chain optimization</li>
-          <li>Strategic port partnerships</li>
-        </ul>
-        <span class="tag">Global Logistics</span>
-      </div>
-    </div>
-
-    <div class="vertical-card">
-      <img src="rail.png.png" alt="Rail Transport" class="vertical-img" onerror="this.outerHTML='<div class=\'vertical-img-placeholder\'>🚂</div>'">
-      <div class="vertical-body">
-        <h3>🚂 Land & Rail Transport</h3>
-        <p>Modern rail and road solutions across strategic corridors in the Americas and Africa.</p>
-        <ul>
-          <li>Rail infrastructure development</li>
-          <li>Connected highway systems</li>
-          <li>Smart traffic management</li>
-          <li>Multimodal logistics hubs</li>
-        </ul>
-        <span class="tag">Infrastructure · Mobility</span>
-      </div>
-    </div>
-
-    <div class="vertical-card">
-      <img src="agri.jpg" alt="Agri-Food" class="vertical-img" onerror="this.outerHTML='<div class=\'vertical-img-placeholder\'>🌾</div>'">
-      <div class="vertical-body">
-        <h3>🌾 Agri-Food & Resources</h3>
-        <p>Agricultural investments and sustainable food supply chains in Africa and Latin America.</p>
-        <ul>
-          <li>Large-scale agricultural zones</li>
-          <li>Sustainable supply chains</li>
-          <li>Rural development programs</li>
-          <li>Food processing infrastructure</li>
-        </ul>
-        <span class="tag">Africa · Latin America</span>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<section class="tourism" id="tourism">
-  <div class="section-tag">Global Tourism</div>
-  <h2 class="section-title">World-Class<br><span class="accent">Destinations</span></h2>
-  <div class="divider"></div>
-  <p class="section-sub">CIG shapes the future of tourism across high-potential regions, transforming natural and cultural assets into sustainable, world-class destinations.</p>
-  <div class="tourism-grid">
-    <div class="tourism-card">
-      <img src="zanzibar.avif" alt="Zanzibar" onerror="this.src='https://images.unsplash.com/photo-1504432842672-1a79f78e4084?w=700'">
-      <div class="tourism-overlay">
-        <h3>🇹🇿 Zanzibar, Tanzania</h3>
-        <p>Luxury coastal resorts, marine conservation zones & integrated tourism infrastructure</p>
-      </div>
-    </div>
-    <div class="tourism-card">
-      <img src="guatemala.png" alt="Guatemala" onerror="this.src='https://images.unsplash.com/photo-1531968455001-5c5272a41129?w=700'">
-      <div class="tourism-overlay">
-        <h3>🇬🇹 Guatemala</h3>
-        <p>Cultural tourism, Mayan heritage routes & sustainable adventure travel</p>
-      </div>
-    </div>
-    <div class="tourism-card">
-      <img src="tanzania.avif" alt="Venezuela" onerror="this.src='https://images.unsplash.com/photo-1518182170546-07661fd94144?w=700'">
-      <div class="tourism-overlay">
-        <h3>🇻🇪 Venezuela</h3>
-        <p>Eco-tourism corridors, coastal redevelopment & cultural heritage revitalization</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="energy" id="energy">
-  <div class="section-tag">Sustainable Energy</div>
-  <h2 class="section-title">Powering the Future with<br><span class="accent">Clean Energy</span></h2>
-  <div class="divider"></div>
-  <p class="section-sub">Accelerating the global transition to clean, reliable, and utility-scale renewable energy across Southeast Asia and Africa.</p>
-  <div class="energy-grid">
-    <div class="energy-card">
-      <div class="energy-icon">☀️</div>
-      <h3>Utility-Scale Solar</h3>
-      <p>Large-scale solar farms integrated with national grids across Southeast Asia.</p>
-    </div>
-    <div class="energy-card">
-      <div class="energy-icon">💧</div>
-      <h3>Hydro-Electric Power</h3>
-      <p>Hydro-electric corridors supporting regional energy security across Africa.</p>
-    </div>
-    <div class="energy-card">
-      <div class="energy-icon">🔋</div>
-      <h3>Energy Storage & Grids</h3>
-      <p>Advanced grid stabilization and energy storage solutions for industrial zones.</p>
-    </div>
-    <div class="energy-card">
-      <div class="energy-icon">🛢️</div>
-      <h3>Oil & Gas Operations</h3>
-      <p>Strategic investments in Indonesia, Venezuela, Gabon, and Dubai.</p>
-    </div>
-  </div>
-</section>
-
-<section class="smartcity" id="smartcity">
-  <div class="section-tag">Smart City Innovation</div>
-  <h2 class="section-title">Building<br><span class="accent">Tomorrow's Cities</span></h2>
-  <div class="divider"></div>
-  <div class="smartcity-inner">
-    <div class="smartcity-img">
-      <img src="smartcity.jpg" alt="Smart City" onerror="this.src='https://images.unsplash.com/photo-1573804633927-bfcbcd909acd?w=800'">
-    </div>
-    <div class="smartcity-text">
-      <h3>Future-Ready Urban Ecosystems</h3>
-      <p>CIG develops cutting-edge smart city projects that merge technology, sustainability, and modern living.</p>
-      <p>Our initiatives elevate quality of life, attract global investment, and support governments in building future-ready urban ecosystems across Africa and Asia.</p>
-      <ul class="pillars">
-        <li>Digital infrastructure & IoT-enabled services</li>
-        <li>Smart mobility & integrated transport</li>
-        <li>Renewable-powered urban districts</li>
-        <li>Modern housing with sustainable design</li>
-        <li>E-governance & digital public services</li>
-        <li>Smart grids & resilient infrastructure</li>
-      </ul>
-      <br>
-      <p style="color:var(--gold);font-size:0.88em;">📍 Active in Zanzibar · Tanzania · Latin America</p>
-    </div>
-  </div>
-</section>
-
-<section class="presence" id="presence">
-  <div class="section-tag">Our Global Footprint</div>
-  <h2 class="section-title">CIG Around<br><span class="accent">the World</span></h2>
-  <div class="divider"></div>
-  <p class="section-sub">Present on four continents, our offices and operations cover key high-growth markets.</p>
-  <div class="presence-grid">
-    <div class="region-card">
-      <div class="region-placeholder">🌏</div>
-      <div class="region-body">
-        <h3>Asia & Middle East</h3>
-        <ul class="country-list">
-          <li>Malaysia — Headquarters (KL)</li>
-          <li>Indonesia — Oil & Gas</li>
-          <li>Dubai — Energy & Finance</li>
-        </ul>
-      </div>
-    </div>
-    <div class="region-card">
-      <div class="region-placeholder">🌎</div>
-      <div class="region-body">
-        <h3>North America</h3>
-        <ul class="country-list">
-          <li>Canada — Regional Office</li>
-          <li>United States — Regional Office</li>
-        </ul>
-      </div>
-    </div>
-    <div class="region-card">
-      <div class="region-placeholder">🌎</div>
-      <div class="region-body">
-        <h3>Latin & Central America</h3>
-        <ul class="country-list">
-          <li>Venezuela — Oil & Gas & Tourism</li>
-          <li>Ecuador — Operations</li>
-          <li>Peru — Operations</li>
-          <li>Guatemala — Tourism</li>
-          <li>Costa Rica — Tourism</li>
-        </ul>
-      </div>
-    </div>
-    <div class="region-card">
-      <div class="region-placeholder">🌍</div>
-      <div class="region-body">
-        <h3>Africa</h3>
-        <ul class="country-list">
-          <li>Tanzania & Zanzibar — Smart City & Tourism</li>
-          <li>Gabon — Oil & Gas</li>
-          <li>Madagascar — Operations</li>
-          <li>DR Congo — Development</li>
-          <li>Central African Republic</li>
-          <li>Niger — Resources</li>
-          <li>Guinea Conakry — Resources</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="value" id="value">
-  <div class="section-tag">Why CIG</div>
-  <h2 class="section-title">The <span class="accent">CIG Difference</span></h2>
-  <div class="divider"></div>
-  <p class="section-sub">We don't just build projects — we build national assets that endure.</p>
-  <div class="value-grid">
-    <div class="value-card">
-      <div class="value-icon">📊</div>
-      <h3>Market Intelligence</h3>
-      <p>Data-driven insights to identify high-growth opportunities across emerging markets.</p>
-    </div>
-    <div class="value-card">
-      <div class="value-icon">🤝</div>
-      <h3>Global Network</h3>
-      <p>Partnerships with governments, financial institutions, and private sector leaders.</p>
-    </div>
-    <div class="value-card">
-      <div class="value-icon">🌱</div>
-      <h3>Sustainable Design</h3>
-      <p>Long-term planning aligned with environmental and social priorities.</p>
-    </div>
-    <div class="value-card">
-      <div class="value-icon">💰</div>
-      <h3>Investment Structuring</h3>
-      <p>Blended finance models that reduce risk and maximize returns.</p>
-    </div>
-    <div class="value-card">
-      <div class="value-icon">🏛️</div>
-      <h3>Government Alignment</h3>
-      <p>Projects designed to support national strategies and development commitments.</p>
-    </div>
-    <div class="value-card">
-      <div class="value-icon">🚀</div>
-      <h3>Scalable Solutions</h3>
-      <p>Future-ready infrastructure built to grow with emerging economies.</p>
-    </div>
-  </div>
-</section>
-
-<section class="hq" id="hq">
-  <div class="section-tag">Headquarters</div>
-  <h2 class="section-title">Kuala Lumpur,<br><span class="accent">Malaysia</span></h2>
-  <div class="divider"></div>
-  <div class="hq-inner">
-    <div class="hq-img">
-      <img src="hq.png.png" alt="CIG Headquarters" onerror="this.src='https://images.unsplash.com/photo-1596422846543-75c6fc197f07?w=800'">
-    </div>
-    <div class="hq-text">
-      <h3>The Heart of CIG's Global Operations</h3>
-      <p>At the heart of Southeast Asia, our headquarters in Kuala Lumpur serves as the strategic coordination center for all our global operations across four continents.</p>
-      <p>CIG chose Kuala Lumpur for its international connectivity, economic stability, and proximity to emerging Asian markets.</p>
-      <div class="hq-info">
-        <div class="hq-info-item"><span>📍</span><div>Location: <strong>Kuala Lumpur, Malaysia</strong></div></div>
-        <div class="hq-info-item"><span>🕐</span><div>Time Zone: <strong>UTC+8</strong></div></div>
-        <div class="hq-info-item"><span>🌐</span><div>Coverage: <strong>4 Continents · 20+ Countries</strong></div></div>
-        <div class="hq-info-item"><span>✉️</span><div>Email: <strong>info@cig-global.com</strong></div></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="contact" id="contact">
-  <div class="section-tag">Get In Touch</div>
-  <h2 class="section-title">Partners &amp;<br><span class="accent">Investors</span></h2>
-  <div class="divider"></div>
-  <p class="section-sub">Would you like to collaborate with CIG or learn more about our investment opportunities?</p>
-  <div class="contact-grid">
-    <div class="contact-info">
-      <h3>Contact Information</h3>
-      <div class="contact-item"><div class="contact-icon">📍</div><div><p>Headquarters<br><strong>Kuala Lumpur, Malaysia</strong></p></div></div>
-      <div class="contact-item"><div class="contact-icon">🌐</div><div><p>Global Presence<br><strong>4 Continents · 20+ Countries</strong></p></div></div>
-      <div class="contact-item"><div class="contact-icon">✉️</div><div><p>General Email<br><strong>info@cig-global.com</strong></p></div></div>
-      <div class="contact-item"><div class="contact-icon">🏢</div><div><p>Sectors<br><strong>Transport · Energy · Tourism · Smart Cities</strong></p></div></div>
-    </div>
-    <div class="form">
-      <input type="text" placeholder="Full name">
-      <input type="text" placeholder="Your company / organization">
-      <input type="email" placeholder="Your email address">
-      <input type="text" placeholder="Your country">
-      <select>
-        <option>Sector of interest</option>
-        <option>Maritime Transport</option>
-        <option>Rail / Land Transport</option>
-        <option>Oil & Gas</option>
-        <option>Sustainable Energy</option>
-        <option>Tourism</option>
-        <option>Smart Cities</option>
-        <option>Agri-Food</option>
-        <option>General Partnership</option>
-        <option>Investment Opportunity</option>
-      </select>
-      <textarea placeholder="Your message or partnership inquiry..."></textarea>
-      <button class="submit-btn">Send Request →</button>
-    </div>
-  </div>
-</section>
-
-<footer>
-  <div class="footer-left">
-    <img src="logo.png" alt="CIG" onerror="this.style.display='none'">
-    <div>
-      <div class="footer-brand">Coordinate International Global</div>
-      <div class="footer-brand"><p>Headquarters: Kuala Lumpur, Malaysia</p></div>
-    </div>
-  </div>
-  <nav>
-    <a href="#vision">Vision</a>
-    <a href="#verticals">Sectors</a>
-    <a href="#tourism">Tourism</a>
-    <a href="#energy">Energy</a>
-    <a href="#smartcity">Smart Cities</a>
-    <a href="#presence">Global Presence</a>
-    <a href="#contact">Contact</a>
-  </nav>
-  <div class="footer-copy">
-    © 1998 Coordinate International Global · All Rights Reserved · 🌐 Asia · Americas · Africa · Middle East
-  </div>
-</footer>
-
-</body>
-</html>
+    <p>CIG drives sustainable
