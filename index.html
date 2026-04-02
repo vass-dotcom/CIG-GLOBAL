@@ -31,10 +31,10 @@ nav.scrolled{padding:10px 48px;background:rgba(10,14,26,0.99);}
 .nav-cta::after{display:none!important;}
 .hero{min-height:100vh;position:relative;display:flex;align-items:center;justify-content:center;text-align:center;padding:140px 40px 80px;overflow:hidden;}
 .hero-video{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:0;opacity:0.85;}
-.hero-overlay{position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(135deg,rgba(10,14,26,0.15),rgba(13,27,62,0.10));z-index:1;}
+.hero-overlay{position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(135deg,rgba(10,14,26,0.45),rgba(13,27,62,0.40));z-index:1;}
 .hero-particles{position:absolute;top:0;left:0;width:100%;height:100%;z-index:2;pointer-events:none;}
 .hero-content{position:relative;z-index:3;max-width:920px;}
-.hero-badge{display:inline-block;padding:6px 22px;border:1px solid var(--gold);border-radius:50px;font-size:0.75em;color:#000;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:28px;animation:fadeInDown 1s ease both;}
+.hero-badge{display:inline-block;padding:6px 22px;border:1px solid #000;border-radius:50px;font-size:0.75em;color:#000;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:28px;animation:fadeInDown 1s ease both;background:rgba(255,255,255,0.15);}
 .hero h1{font-size:1.5em;font-weight:900;letter-spacing:0.18em;text-transform:uppercase;color:#000;margin-bottom:20px;animation:fadeInDown 1s 0.2s ease both;}
 .hero h2{font-size:2.8em;font-weight:800;line-height:1.2;margin-bottom:20px;color:#fff;animation:fadeInUp 1s 0.4s ease both;}
 .hero h2 span{background:linear-gradient(90deg,var(--gold),#f5e070);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
@@ -148,7 +148,7 @@ h2.section-title .accent{background:linear-gradient(90deg,var(--gold),#f5e070);-
 .hq-text h3{font-size:1.4em;font-weight:700;margin-bottom:16px;color:#e0e8f0;}
 .hq-text p{color:#7090b0;line-height:1.8;font-size:0.95em;margin-bottom:14px;}
 .hq-info{display:flex;flex-direction:column;gap:12px;margin-top:24px;}
-.hq-info-item{display:flex;align-items:center;gap:12px;font-size:0.88em;color:#8090a8;padding:10px 14px;border-radius:8px;transition:background 0.2s;}
+.hq-info-item{display:flex;align-items:flex-start;gap:12px;font-size:0.88em;color:#8090a8;padding:10px 14px;border-radius:8px;transition:background 0.2s;}
 .hq-info-item:hover{background:rgba(255,255,255,0.03);}
 .hq-info-item strong{color:#c0d0e0;}
 .contact{background:linear-gradient(135deg,#060a14,var(--navy));}
@@ -176,19 +176,7 @@ footer nav{position:static;background:none;backdrop-filter:none;border:none;padd
 footer nav a{color:#405060;font-size:0.8em;text-decoration:none;transition:color 0.2s;}
 footer nav a:hover{color:var(--gold);}
 .footer-copy{font-size:0.78em;color:#2a3a4a;width:100%;text-align:center;padding-top:20px;border-top:1px solid rgba(255,255,255,0.04);margin-top:8px;}
-.ticker-wrapper{background:linear-gradient(90deg,#03060e,#0a0e1a,#03060e);border-top:1px solid rgba(201,168,76,0.3);border-bottom:1px solid rgba(201,168,76,0.3);padding:0;display:flex;align-items:center;overflow:hidden;height:44px;position:relative;}
-.ticker-label{background:linear-gradient(135deg,var(--gold),#e8c060);color:#000;font-size:0.7em;font-weight:800;letter-spacing:0.1em;padding:0 18px;height:100%;display:flex;align-items:center;white-space:nowrap;flex-shrink:0;z-index:2;}
-.ticker-track{flex:1;overflow:hidden;position:relative;}
-.ticker-inner{display:flex;gap:0;animation:ticker 40s linear infinite;white-space:nowrap;}
-.ticker-inner:hover{animation-play-state:paused;}
-.ticker-item{display:inline-flex;align-items:center;gap:8px;padding:0 24px;border-right:1px solid rgba(255,255,255,0.06);height:44px;font-size:0.8em;}
-.ticker-name{color:#8090a8;font-weight:600;letter-spacing:0.04em;font-size:0.9em;}
-.ticker-value{color:#e0e8f0;font-weight:700;}
-.ticker-change.up{color:#22c55e;}
-.ticker-change.down{color:#ef4444;}
-.ticker-loading{color:#6080a0;padding:0 24px;line-height:44px;font-size:0.82em;}
-@keyframes ticker{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
-  .gold-line{width:100%;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:0.3;}
+.gold-line{width:100%;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:0.3;}
 @keyframes fadeInDown{from{opacity:0;transform:translateY(-30px);}to{opacity:1;transform:translateY(0);}}
 @keyframes fadeInUp{from{opacity:0;transform:translateY(30px);}to{opacity:1;transform:translateY(0);}}
 </style>
@@ -227,14 +215,14 @@ footer nav a:hover{color:var(--gold);}
     <h2>Building Tomorrow's<br><span>Global Infrastructure</span></h2>
     <p>CIG drives sustainable transformation across Asia, the Americas, the Middle East and Africa with forward-looking investments in energy, smart urban ecosystems, and tourism innovation.</p>
     <div class="hero-btns">
-      <a href="#verticals" class="btn-primary">Explore Our Projects →</a>
+      <a href="#verticals" class="btn-primary">View Our Active Projects →</a>
       <a href="#contact" class="btn-outline">Partner With Us</a>
     </div>
     <div class="stats-bar">
-      <div class="stat"><div class="stat-num" data-count="150">0</div><div class="stat-label">Assets Under Development (B)</div></div>
-      <div class="stat"><div class="stat-num" data-count="4">0</div><div class="stat-label">Continents</div></div>
-      <div class="stat"><div class="stat-num" data-count="20">0</div><div class="stat-label">Countries</div></div>
-      <div class="stat"><div class="stat-num" data-count="8">0</div><div class="stat-label">Key Sectors</div></div>
+      <div class="stat"><div class="stat-num">—</div><div class="stat-label">Active Projects Across 4 Continents</div></div>
+      <div class="stat"><div class="stat-num">4</div><div class="stat-label">Continents</div></div>
+      <div class="stat"><div class="stat-num">20+</div><div class="stat-label">Countries</div></div>
+      <div class="stat"><div class="stat-num">6</div><div class="stat-label">Key Sectors</div></div>
     </div>
   </div>
 </section>
@@ -251,32 +239,16 @@ footer nav a:hover{color:var(--gold);}
       <p>Powered by market intelligence and a worldwide network of partners, we deliver sustainable impact — from South America's energy corridors to East Africa's rising smart city ecosystems.</p>
       <p>Our integrated approach combines deep sector expertise, government alignment, and blended finance models to unlock high-growth opportunities across emerging markets.</p>
       <br>
-      <a href="#verticals" class="btn-primary">Explore Our Portfolio →</a>
+      <a href="#verticals" class="btn-primary">View Our Active Projects →</a>
     </div>
     <div class="vision-img reveal-right">
       <img src="smartcity2.png" alt="CIG Global Vision" onerror="this.src='https://images.unsplash.com/photo-1573804633927-bfcbcd909acd?w=800'">
     </div>
   </div>
 </section>
-<!-- PREMIUM TICKER BAR -->
-<div class="ticker-wrapper">
-  <div class="ticker-label">LIVE MARKETS</div>
-  <div class="ticker-track" id="tickerTrack">
-    <div class="ticker-inner" id="tickerInner">
-      <span class="ticker-loading">Loading live data...</span>
-    </div>
-  </div>
-</div>
+
 <div class="gold-line"></div>
-<!-- PREMIUM TICKER BAR -->
-<div class="ticker-wrapper">
-  <div class="ticker-label">LIVE MARKETS</div>
-  <div class="ticker-track" id="tickerTrack">
-    <div class="ticker-inner" id="tickerInner">
-      <span class="ticker-loading">Loading live data...</span>
-    </div>
-  </div>
-</div>
+
 <section class="verticals" id="verticals">
   <div class="section-tag reveal">Verticals of Innovation</div>
   <h2 class="section-title reveal">CIG Invests Across<br><span class="accent">High-Growth Sectors</span></h2>
@@ -411,8 +383,8 @@ footer nav a:hover{color:var(--gold);}
   <div class="divider reveal"></div>
   <p class="section-sub reveal">We don't just build projects — we build national assets that endure.</p>
   <div class="value-grid">
-    <div class="value-card reveal"><div class="value-icon">📊</div><h3>Market Intelligence</h3><p>Data-driven insights to identify high-growth opportunities across emerging markets.</p></div>
-    <div class="value-card reveal"><div class="value-icon">🤝</div><h3>Global Network</h3><p>Partnerships with governments, financial institutions, and private sector leaders.</p></div>
+    <div class="value-card reveal"><div class="value-icon">📊</div><h3>Market Intelligence</h3><p>We combine on-the-ground presence with proprietary data to identify and execute high-growth opportunities across emerging markets.</p></div>
+    <div class="value-card reveal"><div class="value-icon">🤝</div><h3>Global Network</h3><p>Active partnerships with national governments, development finance institutions, and industry leaders across four continents.</p></div>
     <div class="value-card reveal"><div class="value-icon">🌱</div><h3>Sustainable Design</h3><p>Long-term planning aligned with environmental and social priorities.</p></div>
     <div class="value-card reveal"><div class="value-icon">💰</div><h3>Investment Structuring</h3><p>Blended finance models that reduce risk and maximize returns.</p></div>
     <div class="value-card reveal"><div class="value-icon">🏛️</div><h3>Government Alignment</h3><p>Projects designed to support national strategies and development commitments.</p></div>
@@ -428,17 +400,17 @@ footer nav a:hover{color:var(--gold);}
   <div class="divider reveal"></div>
   <div class="hq-inner">
     <div class="hq-img reveal-left">
-      <img src="hq.png.png" alt="CIG Headquarters" onerror="this.src='https://images.unsplash.com/photo-1596422846543-75c6fc197f07?w=800'">
+      <img src="hq.png" alt="CIG Headquarters" onerror="this.src='https://images.unsplash.com/photo-1596422846543-75c6fc197f07?w=800'">
     </div>
     <div class="hq-text reveal-right">
       <h3>The Heart of CIG's Global Operations</h3>
       <p>At the heart of Southeast Asia, our headquarters in Kuala Lumpur serves as the strategic coordination center for all our global operations across four continents.</p>
       <p>CIG chose Kuala Lumpur for its international connectivity, economic stability, and proximity to emerging Asian markets.</p>
       <div class="hq-info">
-        <div class="hq-info-item"><span>📍</span><div>Location: <strong>Kuala Lumpur, Malaysia</strong></div></div>
+        <div class="hq-info-item"><span>📍</span><div>Headquarters: <strong>Kuala Lumpur, Malaysia</strong><br><span style="font-size:0.88em;color:#556070;">Regional offices: Americas · Africa · Middle East</span></div></div>
         <div class="hq-info-item"><span>🕐</span><div>Time Zone: <strong>UTC+8</strong></div></div>
         <div class="hq-info-item"><span>🌐</span><div>Coverage: <strong>4 Continents · 20+ Countries</strong></div></div>
-        <div class="hq-info-item"><span>✉️</span><div>Email: <strong>info@cig-global.com</strong></div></div>
+        <div class="hq-info-item"><span>✉️</span><div>Email: <strong>info@cig-global.com</strong><br><span style="font-size:0.82em;color:#556070;">For investor inquiries, please reference your region and sector of interest.</span></div></div>
       </div>
     </div>
   </div>
@@ -450,13 +422,13 @@ footer nav a:hover{color:var(--gold);}
   <div class="section-tag reveal">Get In Touch</div>
   <h2 class="section-title reveal">Partners &amp;<br><span class="accent">Investors</span></h2>
   <div class="divider reveal"></div>
-  <p class="section-sub reveal">Would you like to collaborate with CIG or learn more about our investment opportunities?</p>
+  <p class="section-sub reveal">We welcome inquiries from institutional partners, project developers, and qualified investors. Please reach out with your region and sector focus.</p>
   <div class="contact-grid">
     <div class="contact-info reveal-left">
       <h3>Contact Information</h3>
-      <div class="contact-item"><div class="contact-icon">📍</div><div><p>Headquarters<br><strong>Kuala Lumpur, Malaysia</strong></p></div></div>
+      <div class="contact-item"><div class="contact-icon">📍</div><div><p>Headquarters<br><strong>Kuala Lumpur, Malaysia</strong><br><span style="font-size:0.82em;color:#556070;">Regional offices: Americas · Africa · Middle East</span></p></div></div>
       <div class="contact-item"><div class="contact-icon">🌐</div><div><p>Global Presence<br><strong>4 Continents · 20+ Countries</strong></p></div></div>
-      <div class="contact-item"><div class="contact-icon">✉️</div><div><p>General Email<br><strong>info@cig-global.com</strong></p></div></div>
+      <div class="contact-item"><div class="contact-icon">✉️</div><div><p>General Email<br><strong>info@cig-global.com</strong><br><span style="font-size:0.82em;color:#556070;">For investor inquiries, please reference your region and sector of interest.</span></p></div></div>
       <div class="contact-item"><div class="contact-icon">🏢</div><div><p>Sectors<br><strong>Transport · Energy · Tourism · Smart Cities</strong></p></div></div>
     </div>
     <div class="form reveal-right">
@@ -513,7 +485,7 @@ function animateFollower(){followerX+=(mouseX-followerX)*0.12;followerY+=(mouseY
 animateFollower();
 document.addEventListener('mousedown',()=>{cursor.classList.add('click');follower.classList.add('click');});
 document.addEventListener('mouseup',()=>{cursor.classList.remove('click');follower.classList.remove('click');});
-document.querySelectorAll('a,button,.vertical-card,.tourism-card,.value-card,.energy-card').forEach(el=>{
+document.querySelectorAll('a,button,.vertical-card,.tourism-card,.value-card,.energy-card,.region-card').forEach(el=>{
   el.addEventListener('mouseenter',()=>{cursor.style.transform='translate(-50%,-50%) scale(2)';follower.style.transform='translate(-50%,-50%) scale(1.5)';});
   el.addEventListener('mouseleave',()=>{cursor.style.transform='translate(-50%,-50%) scale(1)';follower.style.transform='translate(-50%,-50%) scale(1)';});
 });
@@ -527,14 +499,6 @@ window.addEventListener('scroll',()=>{
 const reveals=document.querySelectorAll('.reveal,.reveal-left,.reveal-right');
 const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target);}});},{threshold:0.15});
 reveals.forEach(r=>observer.observe(r));
-function animateCount(el,target){
-  let count=0;const step=target/60;
-  const interval=setInterval(()=>{count+=step;if(count>=target){count=target;clearInterval(interval);}
-  el.textContent=Math.floor(count)+(target===150?'B':target===20?'+':'');},20);
-}
-const counterObserver=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){document.querySelectorAll('.stat-num[data-count]').forEach(el=>{animateCount(el,parseInt(el.dataset.count));});counterObserver.disconnect();}});},{threshold:0.5});
-const statsBar=document.querySelector('.stats-bar');
-if(statsBar)counterObserver.observe(statsBar);
 const canvas=document.getElementById('particleCanvas');
 if(canvas){
   const ctx=canvas.getContext('2d');
@@ -543,61 +507,6 @@ if(canvas){
   for(let i=0;i<60;i++){particles.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,r:Math.random()*2+0.5,dx:(Math.random()-0.5)*0.4,dy:(Math.random()-0.5)*0.4,o:Math.random()*0.4+0.1});}
   function drawParticles(){ctx.clearRect(0,0,canvas.width,canvas.height);particles.forEach(p=>{ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle=`rgba(201,168,76,${p.o})`;ctx.fill();p.x+=p.dx;p.y+=p.dy;if(p.x<0||p.x>canvas.width)p.dx*=-1;if(p.y<0||p.y>canvas.height)p.dy*=-1;});requestAnimationFrame(drawParticles);}
   drawParticles();
-  // LIVE TICKER
-async function loadTicker(){
-  try{
-    const items=[];
-
-    // CRYPTO via CoinGecko (free, no key)
-    const cryptoRes=await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,tron,binancecoin,ripple&vs_currencies=usd&include_24hr_change=true');
-    const crypto=await cryptoRes.json();
-    const cryptoMap={bitcoin:'BTC',ethereum:'ETH',tron:'TRX',binancecoin:'BNB',ripple:'XRP'};
-    for(const[id,symbol] of Object.entries(cryptoMap)){
-      if(crypto[id]){
-        const price=crypto[id].usd;
-        const change=crypto[id].usd_24h_change?.toFixed(2);
-        const up=change>=0;
-        items.push({name:symbol,value:'$'+price.toLocaleString('en-US',{maximumFractionDigits:4}),change:(up?'▲':'▼')+Math.abs(change)+'%',up});
-      }
-    }
-
-    // CURRENCIES via exchangerate-api (free)
-    const fxRes=await fetch('https://open.er-api.com/v6/latest/USD');
-    const fx=await fxRes.json();
-    const pairs=[
-      {from:'USD',to:'EUR',label:'EUR/USD'},
-      {from:'USD',to:'CNY',label:'USD/CNY'},
-      {from:'USD',to:'CAD',label:'USD/CAD'},
-      {from:'USD',to:'MYR',label:'USD/MYR'},
-      {from:'USD',to:'GBP',label:'GBP/USD'},
-      {from:'USD',to:'JPY',label:'USD/JPY'},
-      {from:'USD',to:'XOF',label:'USD/CFA'},
-    ];
-    for(const pair of pairs){
-      const rate=fx.rates[pair.to];
-      if(rate) items.push({name:pair.label,value:rate.toFixed(4),change:'',up:true,isFx:true});
-    }
-
-    // Duplicate for infinite scroll
-    const inner=document.getElementById('tickerInner');
-    if(!inner)return;
-    let html='';
-    const allItems=[...items,...items];
-    for(const item of allItems){
-      html+=`<div class="ticker-item">
-        <span class="ticker-name">${item.name}</span>
-        <span class="ticker-value">${item.value}</span>
-        ${item.change?`<span class="ticker-change ${item.up?'up':'down'}">${item.change}</span>`:''}
-      </div>`;
-    }
-    inner.innerHTML=html;
-  }catch(e){
-    const inner=document.getElementById('tickerInner');
-    if(inner) inner.innerHTML='<span class="ticker-loading">Market data temporarily unavailable</span>';
-  }
-}
-loadTicker();
-setInterval(loadTicker,60000); // refresh every minute
   window.addEventListener('resize',()=>{canvas.width=window.innerWidth;canvas.height=window.innerHeight;});
 }
 </script>
