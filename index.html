@@ -51,7 +51,6 @@ nav.scrolled{padding:10px 32px;background:rgba(10,14,26,0.99);}
 .stat:last-child{border-right:none;}
 .stat-num{font-size:2.4em;font-weight:900;color:var(--gold);}
 .stat-label{font-size:0.78em;color:#a0b0c8;text-transform:uppercase;letter-spacing:0.07em;margin-top:5px;}
-/* TICKER */
 .ticker-wrapper{background:linear-gradient(90deg,#03060e,#0a0e1a,#03060e);border-top:1px solid rgba(201,168,76,0.3);border-bottom:1px solid rgba(201,168,76,0.3);display:flex;align-items:center;overflow:hidden;height:44px;position:relative;}
 .ticker-label{background:linear-gradient(135deg,var(--gold),#e8c060);color:#000;font-size:0.7em;font-weight:800;letter-spacing:0.1em;padding:0 18px;height:100%;display:flex;align-items:center;white-space:nowrap;flex-shrink:0;z-index:2;}
 .ticker-track{flex:1;overflow:hidden;position:relative;}
@@ -63,7 +62,6 @@ nav.scrolled{padding:10px 32px;background:rgba(10,14,26,0.99);}
 .ticker-change.up{color:#22c55e;}
 .ticker-change.down{color:#ef4444;}
 @keyframes ticker{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
-/* REVEAL */
 .reveal{opacity:0;transform:translateY(40px);transition:opacity 0.8s ease,transform 0.8s ease;}
 .reveal.visible{opacity:1;transform:translateY(0);}
 .reveal-left{opacity:0;transform:translateX(-40px);transition:opacity 0.8s ease,transform 0.8s ease;}
@@ -142,7 +140,18 @@ h2.section-title .accent{background:linear-gradient(90deg,var(--gold),#f5e070);-
 .country-list li:hover{color:#c0d0e0;padding-left:6px;}
 .country-list li:last-child{border-bottom:none;}
 .country-list li::before{content:'›';color:var(--gold);font-weight:700;}
-.value{background:#060a14;}
+.leadership{background:#060a14;}
+.leadership-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:28px;margin-top:52px;}
+.leader-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:14px;padding:28px;transition:all 0.4s cubic-bezier(0.175,0.885,0.32,1.275);position:relative;overflow:hidden;text-align:left;}
+.leader-card::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(circle,rgba(201,168,76,0.05) 0%,transparent 70%);opacity:0;transition:opacity 0.4s;}
+.leader-card:hover{border-color:rgba(201,168,76,0.35);transform:translateY(-6px);box-shadow:0 20px 48px rgba(0,0,0,0.35);}
+.leader-card:hover::before{opacity:1;}
+.leader-avatar{width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,var(--gold),#e8c060);display:flex;align-items:center;justify-content:center;font-size:1.5em;font-weight:900;color:#000;margin-bottom:20px;flex-shrink:0;}
+.leader-role{font-size:0.7em;color:var(--gold);text-transform:uppercase;letter-spacing:0.12em;font-weight:700;margin-bottom:8px;line-height:1.4;}
+.leader-name{font-size:1.25em;font-weight:800;margin-bottom:12px;color:#e0e8f0;}
+.leader-desc{font-size:0.87em;color:#6080a0;line-height:1.7;}
+.leader-location{margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.05);font-size:0.78em;color:#556070;}
+.value{background:var(--dark);}
 .value-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:22px;margin-top:52px;}
 .value-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:14px;padding:28px;text-align:center;transition:all 0.4s cubic-bezier(0.175,0.885,0.32,1.275);position:relative;overflow:hidden;}
 .value-card::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(circle,rgba(201,168,76,0.05) 0%,transparent 70%);opacity:0;transition:opacity 0.4s;}
@@ -152,7 +161,7 @@ h2.section-title .accent{background:linear-gradient(90deg,var(--gold),#f5e070);-
 .value-card:hover .value-icon{transform:scale(1.2) rotate(5deg);}
 .value-card h3{font-size:1em;font-weight:700;margin-bottom:10px;color:#e0e8f0;}
 .value-card p{font-size:0.84em;color:#6080a0;line-height:1.7;}
-.hq{background:var(--dark);}
+.hq{background:#060a14;}
 .hq-inner{display:flex;gap:64px;align-items:center;flex-wrap:wrap;margin-top:52px;}
 .hq-img{flex:1;min-width:300px;border-radius:18px;overflow:hidden;border:1px solid rgba(201,168,76,0.2);position:relative;}
 .hq-img img{width:100%;height:420px;object-fit:cover;display:block;transition:transform 0.6s ease;}
@@ -212,7 +221,7 @@ footer nav a:hover{color:var(--gold);}
     <li><a href="#energy">Energy</a></li>
     <li><a href="#smartcity">Smart Cities</a></li>
     <li><a href="#presence">Global Presence</a></li>
-<li><a href="#leadership">Leadership</a></li>
+    <li><a href="#leadership">Leadership</a></li>
     <li><a href="#contact" class="nav-cta">Contact Us</a></li>
   </ul>
 </nav>
@@ -241,7 +250,6 @@ footer nav a:hover{color:var(--gold);}
   </div>
 </section>
 
-<!-- TICKER -->
 <div class="ticker-wrapper">
   <div class="ticker-label">GLOBAL OUTLOOK</div>
   <div class="ticker-track">
@@ -398,54 +406,55 @@ footer nav a:hover{color:var(--gold);}
     </div>
   </div>
 </section>
+
 <div class="gold-line"></div>
 
 <!-- LEADERSHIP -->
-<section style="padding:96px 64px;background:#060a14;" id="leadership">
+<section class="leadership" id="leadership">
   <div class="section-tag reveal">Leadership</div>
   <h2 class="section-title reveal">Our <span class="accent">Executive Team</span></h2>
   <div class="divider reveal"></div>
   <p class="section-sub reveal">CIG is led by a team of seasoned executives with deep expertise across global markets, finance, infrastructure, and regional development.</p>
-  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:28px;margin-top:52px;">
+  <div class="leadership-grid">
 
-    <div class="value-card reveal" style="text-align:left;">
-      <div style="width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,var(--gold),#e8c060);display:flex;align-items:center;justify-content:center;font-size:1.6em;font-weight:900;color:#000;margin-bottom:20px;">WN</div>
-      <div style="font-size:0.72em;color:var(--gold);text-transform:uppercase;letter-spacing:0.12em;font-weight:700;margin-bottom:8px;">Chairman & Chief Executive Officer</div>
-      <h3 style="font-size:1.3em;font-weight:800;margin-bottom:12px;color:#e0e8f0;">William O Nelson</h3>
-      <p style="font-size:0.87em;color:#6080a0;line-height:1.7;">Leading CIG's global strategy and expansion across Asia, the Americas, the Middle East, and Africa. Driving sustainable infrastructure development and high-growth investment across four continents.</p>
-      <div style="margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.05);font-size:0.78em;color:#556070;">📍 Kuala Lumpur, Malaysia</div>
+    <div class="leader-card reveal">
+      <div class="leader-avatar">WN</div>
+      <div class="leader-role">Chairman & Chief Executive Officer</div>
+      <div class="leader-name">William O Nelson</div>
+      <div class="leader-desc">Leading CIG's global strategy and expansion across Asia, the Americas, the Middle East, and Africa. Driving sustainable infrastructure development and high-growth investment across four continents.</div>
+      <div class="leader-location">📍 Kuala Lumpur, Malaysia</div>
     </div>
 
-    <div class="value-card reveal" style="text-align:left;">
-      <div style="width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,var(--gold),#e8c060);display:flex;align-items:center;justify-content:center;font-size:1.6em;font-weight:900;color:#000;margin-bottom:20px;">WL</div>
-      <div style="font-size:0.72em;color:var(--gold);text-transform:uppercase;letter-spacing:0.12em;font-weight:700;margin-bottom:8px;">Chief Financial Officer & Chief Strategy Officer</div>
-      <h3 style="font-size:1.3em;font-weight:800;margin-bottom:12px;color:#e0e8f0;">Wong Loi Onn</h3>
-      <p style="font-size:0.87em;color:#6080a0;line-height:1.7;">Overseeing CIG's financial strategy, investment structuring, and capital allocation across all global operations. Expert in blended finance models and emerging market investment frameworks.</p>
-      <div style="margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.05);font-size:0.78em;color:#556070;">📍 Kuala Lumpur, Malaysia</div>
+    <div class="leader-card reveal">
+      <div class="leader-avatar">WL</div>
+      <div class="leader-role">Chief Financial Officer & Chief Strategy Officer</div>
+      <div class="leader-name">Wong Loi Onn</div>
+      <div class="leader-desc">Overseeing CIG's financial strategy, investment structuring, and capital allocation across all global operations. Expert in blended finance models and emerging market investment frameworks.</div>
+      <div class="leader-location">📍 Kuala Lumpur, Malaysia</div>
     </div>
 
-    <div class="value-card reveal" style="text-align:left;">
-      <div style="width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,var(--gold),#e8c060);display:flex;align-items:center;justify-content:center;font-size:1.6em;font-weight:900;color:#000;margin-bottom:20px;">GW</div>
-      <div style="font-size:0.72em;color:var(--gold);text-transform:uppercase;letter-spacing:0.12em;font-weight:700;margin-bottom:8px;">Chief Operating Officer</div>
-      <h3 style="font-size:1.3em;font-weight:800;margin-bottom:12px;color:#e0e8f0;">Mr. Gavin Wong</h3>
-      <p style="font-size:0.87em;color:#6080a0;line-height:1.7;">Overseeing day-to-day global operations across all CIG divisions, ensuring seamless execution of projects in transport, energy, tourism, and smart city development across four continents.</p>
-      <div style="margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.05);font-size:0.78em;color:#556070;">📍 Kuala Lumpur, Malaysia</div>
+    <div class="leader-card reveal">
+      <div class="leader-avatar">GW</div>
+      <div class="leader-role">Chief Operating Officer</div>
+      <div class="leader-name">Mr. Gavin Wong</div>
+      <div class="leader-desc">Overseeing day-to-day global operations across all CIG divisions, ensuring seamless execution of projects in transport, energy, tourism, and smart city development across four continents.</div>
+      <div class="leader-location">📍 Kuala Lumpur, Malaysia</div>
     </div>
 
-    <div class="value-card reveal" style="text-align:left;">
-      <div style="width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,var(--gold),#e8c060);display:flex;align-items:center;justify-content:center;font-size:1.6em;font-weight:900;color:#000;margin-bottom:20px;">JK</div>
-      <div style="font-size:0.72em;color:var(--gold);text-transform:uppercase;letter-spacing:0.12em;font-weight:700;margin-bottom:8px;">Regional Director — North America & Latin America</div>
-      <h3 style="font-size:1.3em;font-weight:800;margin-bottom:12px;color:#e0e8f0;">Jean Daniel Koffi</h3>
-      <p style="font-size:0.87em;color:#6080a0;line-height:1.7;">Leading CIG's regional operations and business development across North America and Latin America, including strategic partnerships in Canada, the United States, Ecuador, Peru, Guatemala, Venezuela, and Costa Rica.</p>
-      <div style="margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.05);font-size:0.78em;color:#556070;">📍 North America & Latin America</div>
+    <div class="leader-card reveal">
+      <div class="leader-avatar">JK</div>
+      <div class="leader-role">Regional Director — North America & Latin America</div>
+      <div class="leader-name">Jean Daniel Koffi</div>
+      <div class="leader-desc">Leading CIG's regional operations and business development across North America and Latin America, including strategic partnerships in Canada, the United States, Ecuador, Peru, Guatemala, Venezuela, and Costa Rica.</div>
+      <div class="leader-location">📍 North America & Latin America</div>
     </div>
 
-    <div class="value-card reveal" style="text-align:left;">
-      <div style="width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,var(--gold),#e8c060);display:flex;align-items:center;justify-content:center;font-size:1.6em;font-weight:900;color:#000;margin-bottom:20px;">WW</div>
-      <div style="font-size:0.72em;color:var(--gold);text-transform:uppercase;letter-spacing:0.12em;font-weight:700;margin-bottom:8px;">Marketing Manager</div>
-      <h3 style="font-size:1.3em;font-weight:800;margin-bottom:12px;color:#e0e8f0;">Wendy Wong</h3>
-      <p style="font-size:0.87em;color:#6080a0;line-height:1.7;">Driving CIG's global brand strategy, digital presence, and communications across all markets. Overseeing marketing campaigns, investor relations content, and CIG's positioning across four continents.</p>
-      <div style="margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.05);font-size:0.78em;color:#556070;">📍 Kuala Lumpur, Malaysia</div>
+    <div class="leader-card reveal">
+      <div class="leader-avatar">WW</div>
+      <div class="leader-role">Marketing Manager</div>
+      <div class="leader-name">Wendy Wong</div>
+      <div class="leader-desc">Driving CIG's global brand strategy, digital presence, and communications across all markets. Overseeing marketing campaigns, investor relations content, and CIG's positioning across four continents.</div>
+      <div class="leader-location">📍 Kuala Lumpur, Malaysia</div>
     </div>
 
   </div>
@@ -545,6 +554,7 @@ footer nav a:hover{color:var(--gold);}
     <a href="#energy">Energy</a>
     <a href="#smartcity">Smart Cities</a>
     <a href="#presence">Global Presence</a>
+    <a href="#leadership">Leadership</a>
     <a href="#contact">Contact</a>
   </nav>
   <div class="footer-copy">
@@ -553,7 +563,6 @@ footer nav a:hover{color:var(--gold);}
 </footer>
 
 <script>
-// CURSOR
 const cursor=document.getElementById('cursor');
 const follower=document.getElementById('cursorFollower');
 let mouseX=0,mouseY=0,followerX=0,followerY=0;
@@ -562,12 +571,10 @@ function animateFollower(){followerX+=(mouseX-followerX)*0.12;followerY+=(mouseY
 animateFollower();
 document.addEventListener('mousedown',()=>{cursor.classList.add('click');follower.classList.add('click');});
 document.addEventListener('mouseup',()=>{cursor.classList.remove('click');follower.classList.remove('click');});
-document.querySelectorAll('a,button,.vertical-card,.tourism-card,.value-card,.energy-card,.region-card').forEach(el=>{
+document.querySelectorAll('a,button,.vertical-card,.tourism-card,.value-card,.energy-card,.region-card,.leader-card').forEach(el=>{
   el.addEventListener('mouseenter',()=>{cursor.style.transform='translate(-50%,-50%) scale(2)';follower.style.transform='translate(-50%,-50%) scale(1.5)';});
   el.addEventListener('mouseleave',()=>{cursor.style.transform='translate(-50%,-50%) scale(1)';follower.style.transform='translate(-50%,-50%) scale(1)';});
 });
-
-// SCROLL PROGRESS
 const progress=document.getElementById('scrollProgress');
 window.addEventListener('scroll',()=>{
   const scrollTop=window.scrollY;
@@ -575,13 +582,9 @@ window.addEventListener('scroll',()=>{
   progress.style.width=(scrollTop/docHeight*100)+'%';
   document.getElementById('navbar').classList.toggle('scrolled',scrollTop>80);
 });
-
-// SCROLL REVEAL
 const reveals=document.querySelectorAll('.reveal,.reveal-left,.reveal-right');
 const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target);}});},{threshold:0.15});
 reveals.forEach(r=>observer.observe(r));
-
-// PARTICLES
 const canvas=document.getElementById('particleCanvas');
 if(canvas){
   const ctx=canvas.getContext('2d');
@@ -592,12 +595,9 @@ if(canvas){
   drawParticles();
   window.addEventListener('resize',()=>{canvas.width=window.innerWidth;canvas.height=window.innerHeight;});
 }
-
-// LIVE TICKER
 async function loadTicker(){
   try{
     const items=[];
-    // CRYPTO
     const cryptoRes=await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,tron,binancecoin,ripple,solana&vs_currencies=usd&include_24hr_change=true');
     const crypto=await cryptoRes.json();
     const cryptoMap={bitcoin:'BTC',ethereum:'ETH',tron:'TRX',binancecoin:'BNB',ripple:'XRP',solana:'SOL'};
@@ -609,7 +609,6 @@ async function loadTicker(){
         items.push({name:symbol,value:'$'+price.toLocaleString('en-US',{maximumFractionDigits:2}),change:(up?'▲':'▼')+Math.abs(change)+'%',up});
       }
     }
-    // CURRENCIES
     const fxRes=await fetch('https://open.er-api.com/v6/latest/USD');
     const fx=await fxRes.json();
     const pairs=[
