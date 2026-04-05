@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zanzibar, Tanzania – CIG Tourism</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{--gold:#c9a84c;--dark:#0a0e1a;}
+body{font-family:'Segoe UI',sans-serif;background:var(--dark);color:#fff;}
+nav{position:fixed;top:0;width:100%;background:rgba(10,14,26,0.97);backdrop-filter:blur(16px);padding:14px 40px;display:flex;justify-content:space-between;align-items:center;z-index:1000;border-bottom:1px solid rgba(201,168,76,0.15);}
+.logo{display:flex;align-items:center;gap:10px;}
+.logo img{height:48px;border-radius:6px;}
+.logo-text{font-size:0.82em;font-weight:700;color:#fff;}
+.logo-text span{color:var(--gold);}
+.back-btn{padding:8px 20px;border:1px solid rgba(201,168,76,0.4);color:var(--gold);font-weight:600;border-radius:5px;text-decoration:none;font-size:0.82em;transition:all 0.2s;}
+.back-btn:hover{background:rgba(201,168,76,0.1);}
+.hero{min-height:75vh;position:relative;display:flex;align-items:flex-end;padding:60px 60px 80px;overflow:hidden;}
+.hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.55;}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(10,14,26,0.2) 0%,rgba(10,14,26,0.95) 100%);}
+.hero-content{position:relative;z-index:2;max-width:700px;}
+.hero-badge{display:inline-block;padding:5px 16px;border:1px solid var(--gold);border-radius:50px;font-size:0.72em;color:var(--gold);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:18px;}
+.hero h1{font-size:3.4em;font-weight:900;line-height:1.1;margin-bottom:16px;}
+.hero h1 span{background:linear-gradient(90deg,var(--gold),#f5e070);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.hero p{color:#a0b0c8;font-size:1.05em;line-height:1.8;max-width:560px;margin-bottom:28px;}
+.btn-gold{padding:13px 32px;background:linear-gradient(135deg,var(--gold),#e8c060);color:#000;font-weight:700;border-radius:5px;text-decoration:none;font-size:0.9em;display:inline-block;transition:all 0.3s;}
+.btn-gold:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(201,168,76,0.35);}
+.content{max-width:1100px;margin:0 auto;padding:80px 40px;}
+.gold-line{width:100%;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:0.3;margin:60px 0;}
+.label{font-size:0.72em;color:var(--gold);text-transform:uppercase;letter-spacing:0.16em;font-weight:700;margin-bottom:10px;}
+.title{font-size:2em;font-weight:800;margin-bottom:14px;line-height:1.2;}
+.title span{background:linear-gradient(90deg,var(--gold),#f5e070);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.divider{width:48px;height:3px;background:linear-gradient(90deg,var(--gold),#f5e070);border-radius:2px;margin:14px 0 28px;}
+.text{color:#7090b0;font-size:0.97em;line-height:1.9;margin-bottom:16px;}
+/* GALLERY */
+.gallery-main{width:100%;height:520px;object-fit:cover;border-radius:18px;border:1px solid rgba(201,168,76,0.15);display:block;margin-bottom:20px;}
+.gallery-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:20px;}
+.gallery-2{display:grid;grid-template-columns:2fr 1fr;gap:16px;margin-bottom:20px;}
+.gallery-item{position:relative;border-radius:14px;overflow:hidden;border:1px solid rgba(201,168,76,0.1);}
+.gallery-item img{width:100%;height:220px;object-fit:cover;display:block;transition:transform 0.5s ease;}
+.gallery-item:hover img{transform:scale(1.06);}
+.gallery-caption{position:absolute;bottom:0;left:0;right:0;padding:14px 16px;background:linear-gradient(transparent,rgba(10,14,26,0.92));font-size:0.8em;font-weight:600;color:#e0e8f0;}
+.gallery-caption span{color:var(--gold);}
+/* FEATURES */
+.feat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;margin-top:28px;}
+.feat{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:12px;padding:24px;transition:all 0.3s;}
+.feat:hover{border-color:rgba(201,168,76,0.3);transform:translateY(-3px);}
+.feat-icon{font-size:1.8em;margin-bottom:12px;}
+.feat h3{font-size:0.95em;font-weight:700;margin-bottom:7px;color:#e0e8f0;}
+.feat p{font-size:0.83em;color:#6080a0;line-height:1.6;}
+/* STATS */
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin:32px 0;}
+.stat-box{background:rgba(201,168,76,0.06);border:1px solid rgba(201,168,76,0.15);border-radius:12px;padding:24px;text-align:center;}
+.stat-num{font-size:2em;font-weight:900;color:var(--gold);margin-bottom:6px;}
+.stat-label{font-size:0.78em;color:#6080a0;text-transform:uppercase;letter-spacing:0.06em;}
+/* CTA */
+.cta{background:linear-gradient(135deg,rgba(201,168,76,0.08),rgba(201,168,76,0.02));border:1px solid rgba(201,168,76,0.2);border-radius:18px;padding:56px;text-align:center;margin-top:60px;}
+.cta h2{font-size:1.9em;font-weight:800;margin-bottom:14px;}
+.cta p{color:#7090b0;margin-bottom:28px;max-width:480px;margin-left:auto;margin-right:auto;}
+.btn-outline{padding:13px 32px;border:1px solid rgba(201,168,76,0.5);color:var(--gold);font-weight:600;border-radius:5px;text-decoration:none;font-size:0.9em;display:inline-block;margin-left:12px;transition:all 0.3s;}
+.btn-outline:hover{background:rgba(201,168,76,0.1);}
+footer{background:#03060e;padding:28px 40px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;border-top:1px solid rgba(201,168,76,0.1);margin-top:80px;}
+.footer-brand{font-size:0.88em;font-weight:700;color:var(--gold);}
+.footer-copy{font-size:0.76em;color:#2a3a4a;}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">
+    <img src="logo.png" alt="CIG" onerror="this.style.display='none'">
+    <div class="logo-text"><span>Coordinate</span> International Global</div>
+  </div>
+  <a href="index.html" class="back-btn">← Back to Home</a>
+</nav>
+
+<section class="hero">
+  <img src="zanzibar.avif" class="hero-img" onerror="this.src='https://images.unsplash.com/photo-1504432842672-1a79f78e4084?w=1400'" alt="Zanzibar">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-badge">🇹🇿 Zanzibar, Tanzania</div>
+    <h1>Luxury Coastal<br><span>Tourism & Smart City</span></h1>
+    <p>CIG is transforming Zanzibar into East Africa's premier destination through world-class resorts, marine conservation, and integrated smart city infrastructure.</p>
+    <a href="index.html#contact" class="btn-gold">Partner With CIG →</a>
+  </div>
+</section>
+
+<div class="content">
+
+  <div class="label">Overview</div>
+  <div class="title">Zanzibar — A <span>Strategic Investment</span></div>
+  <div class="divider"></div>
+  <p class="text">CIG holds a strategic partnership with the Ministry of Tourism (Zanzibar) to develop premium tourism infrastructure, marine conservation zones, and integrated smart city clusters along Zanzibar's pristine coastline. Our investment positions Zanzibar as the premier luxury eco-tourism destination in East Africa.</p>
+  <p class="text">The archipelago's unique combination of white sand beaches, Swahili cultural heritage, and proximity to major global routes makes it one of the most compelling tourism investment opportunities in the African continent.</p>
+
+  <div class="stats">
+    <div class="stat-box"><div class="stat-num">🏨</div><div class="stat-label">Premium Eco-Resorts</div></div>
+    <div class="stat-box"><div class="stat-num">🐬</div><div class="stat-label">Marine Conservation</div></div>
+    <div class="stat-box"><div class="stat-num">🏙️</div><div class="stat-label">Smart City Clusters</div></div>
+    <div class="stat-box"><div class="stat-num">🤝</div><div class="stat-label">Govt. Partnership</div></div>
+  </div>
+
+  <div class="gold-line"></div>
+
+  <!-- MAIN GALLERY IMAGE -->
+  <img src="zanzibar.avif" class="gallery-main" alt="Zanzibar Beach" onerror="this.src='https://images.unsplash.com/photo-1590523741831-ab7e8b8f9c7f?w=1200'">
+
+  <!-- 3 IMAGES -->
+  <div class="gallery-3">
+    <div class="gallery-item">
+      <img src="zanzibar.avif" alt="Zanzibar Coast" onerror="this.src='https://images.unsplash.com/photo-1559128010-7c1ad6e1b6a5?w=500'">
+      <div class="gallery-caption"><span>🌊</span> Crystal Waters</div>
+    </div>
+    <div class="gallery-item">
+      <img src="zanzibar.avif" alt="Resort" onerror="this.src='https://images.unsplash.com/photo-1439130490301-25e322d88054?w=500'">
+      <div class="gallery-caption"><span>🏖️</span> Coastal Resorts</div>
+    </div>
+    <div class="gallery-item">
+      <img src="smartcity1.png" alt="Smart City" onerror="this.src='https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=500'">
+      <div class="gallery-caption"><span>🏙️</span> Smart Infrastructure</div>
+    </div>
+  </div>
+
+  <!-- 2 IMAGES -->
+  <div class="gallery-2">
+    <div class="gallery-item">
+      <img src="zanzibar.avif" alt="Aerial" style="height:260px;" onerror="this.src='https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=700'">
+      <div class="gallery-caption"><span>🛥️</span> Aerial Coastline View</div>
+    </div>
+    <div class="gallery-item">
+      <img src="tanzania.avif" alt="Culture" style="height:260px;" onerror="this.src='https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=500'">
+      <div class="gallery-caption"><span>🎭</span> Swahili Culture</div>
+    </div>
+  </div>
+
+  <div class="gold-line"></div>
+
+  <div class="label">Our Focus</div>
+  <div class="title">What CIG is <span>Building in Zanzibar</span></div>
+  <div class="divider"></div>
+
+  <div class="feat-grid">
+    <div class="feat"><div class="feat-icon">🏝️</div><h3>Luxury Eco-Resorts</h3><p>World-class beachfront resorts with sustainable architecture and zero-carbon operations along the northern coast.</p></div>
+    <div class="feat"><div class="feat-icon">🌊</div><h3>Marine Conservation</h3><p>Protected marine ecosystems integrating conservation science with sustainable snorkeling and diving tourism.</p></div>
+    <div class="feat"><div class="feat-icon">🏙️</div><h3>Smart City Clusters</h3><p>Digital infrastructure, IoT services, and smart mobility integrated across coastal urban communities.</p></div>
+    <div class="feat"><div class="feat-icon">✈️</div><h3>Tourism Corridors</h3><p>Integrated transport networks connecting Zanzibar Town, Nungwi, and the southern beaches.</p></div>
+    <div class="feat"><div class="feat-icon">👥</div><h3>Community Development</h3><p>Local employment, training programs, and cultural preservation embedded in every development phase.</p></div>
+    <div class="feat"><div class="feat-icon">🤝</div><h3>Ministry Partnership</h3><p>Direct collaboration with the Ministry of Tourism (Zanzibar) for fully aligned national development.</p></div>
+  </div>
+
+  <div class="cta">
+    <h2>Invest in <span style="color:var(--gold)">Zanzibar</span></h2>
+    <p>CIG welcomes qualified investors and hospitality partners to join Zanzibar's transformation into East Africa's premier destination.</p>
+    <a href="index.html#contact" class="btn-gold">Contact Our Team →</a>
+    <a href="index.html" class="btn-outline">Back to Home</a>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-brand">CIG · Zanzibar Tourism Division</div>
+  <div class="footer-copy">© 2026 Coordinate International Global · All Rights Reserved</div>
+</footer>
+
+</body>
+</html>
