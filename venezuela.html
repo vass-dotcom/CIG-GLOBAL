@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Venezuela – CIG Tourism</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}:root{--gold:#c9a84c;--dark:#0a0e1a;}
+body{font-family:'Segoe UI',sans-serif;background:var(--dark);color:#fff;}
+nav{position:fixed;top:0;width:100%;background:rgba(10,14,26,0.97);backdrop-filter:blur(16px);padding:12px 32px;display:flex;justify-content:space-between;align-items:center;z-index:1000;border-bottom:1px solid rgba(201,168,76,0.15);}
+.logo{display:flex;align-items:center;gap:10px;}.logo img{height:48px;border-radius:6px;}.logo-text{font-size:0.82em;font-weight:700;color:#fff;}.logo-text span{color:var(--gold);}
+.back-btn{padding:8px 20px;border:1px solid rgba(201,168,76,0.4);color:var(--gold);font-weight:600;border-radius:5px;text-decoration:none;font-size:0.82em;display:flex;align-items:center;gap:8px;transition:all 0.2s;white-space:nowrap;}.back-btn:hover{background:rgba(201,168,76,0.1);}
+.hero{min-height:75vh;position:relative;display:flex;align-items:flex-end;padding:60px 60px 72px;overflow:hidden;}
+.hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.5;}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(10,14,26,0.2),rgba(10,14,26,0.96));}
+.hero-content{position:relative;z-index:2;max-width:780px;}
+.breadcrumb{font-size:0.7em;color:#556070;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:14px;}.breadcrumb b{color:var(--gold);}
+.hero-badge{display:inline-block;padding:5px 16px;border:1px solid var(--gold);border-radius:50px;font-size:0.72em;color:var(--gold);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:16px;}
+.hero h1{font-size:2.9em;font-weight:900;line-height:1.1;margin-bottom:14px;}
+.hero h1 span{background:linear-gradient(90deg,var(--gold),#f5e070);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.hero-sub{color:#a0b0c8;font-size:1em;line-height:1.8;max-width:580px;margin-bottom:24px;}
+.btn-gold{padding:12px 30px;background:linear-gradient(135deg,var(--gold),#e8c060);color:#000;font-weight:700;border-radius:5px;text-decoration:none;font-size:0.88em;display:inline-block;transition:all 0.3s;}.btn-gold:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(201,168,76,0.35);}
+.content{max-width:980px;margin:0 auto;padding:72px 40px;}
+.gold-line{width:100%;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:0.3;margin:52px 0;}
+.label{font-size:0.7em;color:var(--gold);text-transform:uppercase;letter-spacing:0.14em;font-weight:700;margin-bottom:8px;}
+.title{font-size:1.9em;font-weight:800;margin-bottom:12px;line-height:1.2;}.title span{background:linear-gradient(90deg,var(--gold),#f5e070);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.divider{width:48px;height:3px;background:linear-gradient(90deg,var(--gold),#f5e070);border-radius:2px;margin:12px 0 28px;}
+.article p{color:#c0ccd8;font-size:0.98em;line-height:1.95;margin-bottom:22px;font-weight:300;}
+.article p:first-child{font-size:1.04em;color:#d0dce8;font-weight:400;border-left:3px solid var(--gold);padding-left:20px;margin-bottom:26px;}
+.hlights{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:16px;margin:36px 0;}
+.hbox{background:rgba(201,168,76,0.06);border:1px solid rgba(201,168,76,0.18);border-radius:14px;padding:22px;transition:all 0.3s;}.hbox:hover{border-color:rgba(201,168,76,0.4);transform:translateY(-3px);}
+.hbox-icon{font-size:1.7em;margin-bottom:10px;}.hbox h3{font-size:0.93em;font-weight:700;margin-bottom:6px;color:#e0e8f0;}.hbox p{font-size:0.81em;color:#6080a0;line-height:1.6;}
+.gallery{display:grid;grid-template-columns:2fr 1fr;gap:14px;margin:36px 0;}
+.gal-main img{width:100%;height:360px;object-fit:cover;border-radius:16px;border:1px solid rgba(201,168,76,0.12);display:block;}
+.gal-side{display:flex;flex-direction:column;gap:14px;}.gal-side img{width:100%;height:173px;object-fit:cover;border-radius:13px;border:1px solid rgba(201,168,76,0.12);display:block;}
+.cta-box{background:linear-gradient(135deg,rgba(201,168,76,0.08),rgba(201,168,76,0.02));border:1px solid rgba(201,168,76,0.2);border-radius:18px;padding:48px;text-align:center;margin-top:52px;}
+.cta-box h2{font-size:1.7em;font-weight:800;margin-bottom:12px;}.cta-box p{color:#7090b0;margin-bottom:22px;max-width:460px;margin-left:auto;margin-right:auto;}
+.btn-out{padding:12px 28px;border:1px solid rgba(201,168,76,0.5);color:var(--gold);font-weight:600;border-radius:5px;text-decoration:none;font-size:0.88em;display:inline-block;margin-left:10px;transition:all 0.3s;}.btn-out:hover{background:rgba(201,168,76,0.1);}
+footer{background:#03060e;padding:22px 32px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;border-top:1px solid rgba(201,168,76,0.1);margin-top:72px;}
+.fbrand{font-size:0.86em;font-weight:700;color:var(--gold);}.fcopy{font-size:0.74em;color:#2a3a4a;}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity 0.7s,transform 0.7s;}.reveal.visible{opacity:1;transform:translateY(0);}
+@media(max-width:768px){nav{padding:10px 16px;}.logo img{height:38px;}.back-btn{padding:6px 12px;font-size:0.74em;}.hero{padding:80px 18px 48px;}.hero h1{font-size:2em;}.content{padding:44px 18px;}.gallery{grid-template-columns:1fr;}.gal-side{flex-direction:row;}.gal-side img{height:140px;flex:1;}.hlights{grid-template-columns:1fr 1fr;}.cta-box{padding:28px 16px;}.btn-out{margin-left:0;margin-top:10px;display:block;width:fit-content;margin:10px auto 0;}footer{flex-direction:column;text-align:center;}}
+@media(max-width:480px){.hlights{grid-template-columns:1fr;}.gal-side{flex-direction:column;}}
+</style>
+</head>
+<body>
+<nav>
+  <div class="logo"><img src="logo.png" alt="CIG" onerror="this.style.display='none'"><div class="logo-text"><span>Coordinate</span> International Global</div></div>
+  <a href="index.html" class="back-btn">← Back to Home</a>
+</nav>
+<section class="hero">
+  <img src="tanzania.avif" class="hero-img" alt="Venezuela" onerror="this.src='https://images.unsplash.com/photo-1518182170546-07661fd94144?w=1400'">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="breadcrumb">Global Tourism <b>›</b> Venezuela</div>
+    <div class="hero-badge">🇻🇪 Venezuela</div>
+    <h1>Eco-Tourism &<br><span>Coastal Redevelopment</span></h1>
+    <p class="hero-sub">Developing eco-tourism corridors, coastal redevelopment, and cultural heritage revitalization across Venezuela's extraordinary natural landscape.</p>
+    <a href="index.html#contact" class="btn-gold">Partner With CIG →</a>
+  </div>
+</section>
+<div class="content">
+  <div class="reveal">
+    <div class="label">Overview</div>
+    <div class="title">Venezuela — <span>Eco-Tourism Opportunity</span></div>
+    <div class="divider"></div>
+    <div class="article">
+      <p>Venezuela presents a strong opportunity for the development of eco-tourism corridors, coastal redevelopment, and cultural heritage revitalization. With its vast biodiversity—including the Amazon rainforest, the Andes, and Caribbean coastlines—the country offers a unique foundation for sustainable tourism experiences. The vision is to create integrated tourism ecosystems that combine environmental preservation with cultural authenticity. This approach enhances international appeal while protecting fragile natural and historical assets.</p>
+      <p>Projects focus on establishing eco-tourism corridors that connect protected areas, coastal zones, and cultural landmarks into cohesive travel experiences. By integrating conservation initiatives with modern infrastructure, these developments support biodiversity while improving accessibility and visitor experience. Sustainable tourism has the potential to generate income for local communities and promote environmental awareness. Each initiative is designed to balance economic growth with long-term ecological responsibility.</p>
+      <p>Beyond tourism, these developments contribute to national revitalization by creating jobs, attracting investment, and strengthening regional identity. Efforts to modernize infrastructure and expand tourism are already seen as a key lever for economic recovery, although sustainability remains critical to long-term success. The long-term vision is to position Venezuela as a leading destination for eco-conscious travel and cultural exploration.</p>
+    </div>
+  </div>
+  <div class="hlights reveal">
+    <div class="hbox"><div class="hbox-icon">🌿</div><h3>Eco-Tourism Corridors</h3><p>Protected travel routes connecting Amazon, Andes, and Caribbean coastal ecosystems.</p></div>
+    <div class="hbox"><div class="hbox-icon">🏖️</div><h3>Coastal Redevelopment</h3><p>Modern hospitality infrastructure along Venezuela's world-class Caribbean coastline.</p></div>
+    <div class="hbox"><div class="hbox-icon">🏛️</div><h3>Heritage Revitalization</h3><p>Cultural preservation programs that connect visitors with Venezuela's historical identity.</p></div>
+    <div class="hbox"><div class="hbox-icon">🌱</div><h3>Biodiversity Protection</h3><p>Conservation-led tourism that protects fragile ecosystems while generating economic value.</p></div>
+  </div>
+  <div class="gallery reveal">
+    <div class="gal-main"><img src="tanzania.avif" alt="Venezuela" onerror="this.src='https://images.unsplash.com/photo-1518182170546-07661fd94144?w=900'"></div>
+    <div class="gal-side">
+      <img src="zanzibar.avif" alt="Coast" onerror="this.src='https://images.unsplash.com/photo-1504432842672-1a79f78e4084?w=500'">
+      <img src="agri1.jpg" alt="Nature" onerror="this.src='https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=500'">
+    </div>
+  </div>
+  <div class="gold-line"></div>
+  <div class="cta-box reveal">
+    <h2>Invest in <span style="color:var(--gold)">Venezuela Tourism</span></h2>
+    <p>CIG welcomes eco-tourism investors and development partners to join Venezuela's transformation as a sustainable destination.</p>
+    <a href="index.html#contact" class="btn-gold">Contact Our Team →</a>
+    <a href="index.html" class="btn-out">Back to Home</a>
+  </div>
+</div>
+<footer><div class="fbrand">CIG · Venezuela Tourism Division</div><div class="fcopy">© 2026 Coordinate International Global · All Rights Reserved</div></footer>
+<script>const obs=new IntersectionObserver(e=>{e.forEach(el=>{if(el.isIntersecting){el.target.classList.add('visible');obs.unobserve(el.target);}});},{threshold:0.1});document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));</script>
+</body>
+</html>
