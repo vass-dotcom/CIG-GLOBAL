@@ -58,12 +58,130 @@ nav{position:fixed;top:0;width:100%;background:rgba(10,14,26,0.97);backdrop-filt
 footer{background:#03060e;padding:24px 40px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;border-top:1px solid rgba(201,168,76,0.1);margin-top:80px;}
 .fbrand{font-size:0.88em;font-weight:700;color:var(--gold);}
 .fcopy{font-size:0.76em;color:#2a3a4a;}
-.reveal{opacity:0;transform:translateY(28px);transition:opacity 0.7s,transform 0.7s;}
-.reveal.visible{opacity:1;transform:translateY(0);}
-@media(max-width:768px){nav{padding:10px 16px;}.logo img{height:40px;}.logo-text{font-size:0.74em;}.back-btn{padding:6px 14px;font-size:0.76em;}.hero{padding:88px 20px 52px;}.hero h1{font-size:2.1em;}.content{padding:52px 20px;}.gallery-hero{height:260px;}.gallery-row{grid-template-columns:1fr 1fr;}.gallery-row img{height:150px;}.hlights{grid-template-columns:1fr 1fr;}.cta-box{padding:32px 20px;}.btn-out{margin-left:0;margin-top:12px;display:block;width:fit-content;margin:12px auto 0;}footer{flex-direction:column;text-align:center;}}
-@media(max-width:480px){.hero h1{font-size:1.75em;}.gallery-row{grid-template-columns:1fr;}.hlights{grid-template-columns:1fr;}}
+@media(max-width:768px){
+  nav{padding:10px 16px;}
+  .logo img{height:40px;}
+  .logo-text{font-size:0.74em;}
+  .back-btn{padding:6px 14px;font-size:0.76em;}
+  .hero{padding:88px 20px 52px;}
+  .hero h1{font-size:2.1em;}
+  .content{padding:52px 20px;}
+  .gallery-hero{height:260px;}
+  .gallery-row{grid-template-columns:1fr 1fr;}
+  .gallery-row img{height:150px;}
+  .hlights{grid-template-columns:1fr 1fr;}
+  .cta-box{padding:32px 20px;}
+  .btn-out{margin-left:0;margin-top:12px;display:block;width:fit-content;margin:12px auto 0;}
+  footer{flex-direction:column;text-align:center;}
+}
+@media(max-width:480px){
+  .hero h1{font-size:1.75em;}
+  .gallery-row{grid-template-columns:1fr;}
+  .hlights{grid-template-columns:1fr;}
+}
 </style>
 </head>
 <body>
+
 <nav>
-  <div class="logo"><img src="logo.png" alt="CIG" onerror="this.style.display='none'"><div class="logo-text"><span>Coordinate</span> Internati
+  <div class="logo">
+    <img src="logo.png" alt="CIG" onerror="this.style.display='none'">
+    <div class="logo-text"><span>Coordinate</span> International Global</div>
+  </div>
+  <a href="index.html" class="back-btn">← Back to Home</a>
+</nav>
+
+<section class="hero">
+  <img src="agri1.jpg" class="hero-img" alt="Africa Agricultural Zones"
+    onerror="this.src='https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=1400'">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="breadcrumb">Agri-Food & Resources <b>›</b> Africa Agricultural Zones</div>
+    <div class="hero-badge">🌍 Africa Agricultural Zones</div>
+    <h1>Large-Scale Farming<br><span>Across Africa</span></h1>
+    <p class="hero-sub">CIG is developing large-scale agricultural zones across key regions of Africa to unlock the continent's vast agricultural potential and position Africa as a major global supplier of food and raw materials.</p>
+    <a href="index.html#contact" class="btn-gold">Partner With CIG →</a>
+  </div>
+</section>
+
+<div class="content">
+
+  <div class="label">Overview</div>
+  <div class="title">Africa Agricultural Zones — <span>Unlocking the Continent's Potential</span></div>
+  <div class="divider"></div>
+  <div class="article">
+    <p>CIG is developing large-scale agricultural zones across key regions of Africa to unlock the continent's vast agricultural potential. These zones integrate modern farming techniques, irrigation systems, and logistics infrastructure to maximize productivity and efficiency. By partnering with local governments and stakeholders, CIG ensures long-term food security and sustainable economic growth.</p>
+    <p>Our approach focuses on transforming underutilized land into high-yield agricultural ecosystems supported by advanced technology and data-driven insights. From crop production to storage and distribution, every stage is optimized to reduce waste and increase value creation. This model empowers local communities while attracting international investment into Africa's agricultural sector.</p>
+    <p>Through these agricultural zones, CIG aims to position Africa as a major global supplier of food and raw materials. The initiative creates jobs, strengthens regional supply chains, and enhances export capacity. Ultimately, it contributes to building resilient economies across the continent.</p>
+  </div>
+  <a href="index.html#contact" class="explore-btn">Explore <span class="explore-arrow">→</span></a>
+
+  <img src="agri1.jpg" class="gallery-hero" alt="Africa Agricultural Zones"
+    onerror="this.src='https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=1200'">
+
+  <div class="gallery-row">
+    <img src="agri1.jpg" alt="Farming"
+      onerror="this.src='https://images.unsplash.com/photo-1500595046743-cd271d694d30?w=500'">
+    <img src="agri2.jpg" alt="Irrigation"
+      onerror="this.src='https://images.unsplash.com/photo-1464226184884-fa280b87c399?w=500'">
+    <img src="agri3.jpg" alt="Harvest"
+      onerror="this.src='https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=500'">
+  </div>
+
+  <div class="gold-line"></div>
+
+  <div class="label">Strategic Focus</div>
+  <div class="title">What CIG Delivers in <span>Africa Agriculture</span></div>
+  <div class="divider"></div>
+
+  <div class="hlights">
+    <div class="hbox">
+      <div class="hbox-icon">🌾</div>
+      <h3>Modern Farming Techniques</h3>
+      <p>Advanced agricultural practices and technology-driven farming systems maximizing yield and sustainability.</p>
+    </div>
+    <div class="hbox">
+      <div class="hbox-icon">💧</div>
+      <h3>Irrigation Systems</h3>
+      <p>Large-scale irrigation infrastructure ensuring consistent water supply and optimal crop production year-round.</p>
+    </div>
+    <div class="hbox">
+      <div class="hbox-icon">🚚</div>
+      <h3>Logistics Infrastructure</h3>
+      <p>Storage, transportation, and distribution networks reducing waste and connecting farms to markets efficiently.</p>
+    </div>
+    <div class="hbox">
+      <div class="hbox-icon">📊</div>
+      <h3>Data-Driven Insights</h3>
+      <p>Technology platforms providing real-time monitoring and analytics to optimize every stage of production.</p>
+    </div>
+    <div class="hbox">
+      <div class="hbox-icon">👥</div>
+      <h3>Community Empowerment</h3>
+      <p>Local workforce development and community engagement programs embedded in every agricultural initiative.</p>
+    </div>
+    <div class="hbox">
+      <div class="hbox-icon">🌍</div>
+      <h3>Export Capacity</h3>
+      <p>Strengthening Africa's position as a major global supplier of food and raw materials through enhanced export networks.</p>
+    </div>
+  </div>
+
+  <div class="gold-line"></div>
+
+  <div class="cta-box">
+    <h2>Invest in <span style="color:var(--gold)">Africa Agriculture</span></h2>
+    <p>CIG welcomes strategic investors and agri-business partners to join our agricultural zone development initiatives across sub-Saharan Africa.</p>
+    <a href="index.html#contact" class="btn-gold">Contact Our Team →</a>
+    <a href="index.html" class="btn-out">Back to Home</a>
+  </div>
+
+</div>
+
+<footer>
+  <div class="fbrand">CIG · Africa Agricultural Zones Division</div>
+  <div class="fcopy">© 2026 Coordinate International Global · All Rights Reserved</div>
+</footer>
+
+</body>
+</html>
