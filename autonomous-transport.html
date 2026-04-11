@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Autonomous Transport – CIG Automotive</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{--gold:#c9a84c;--dark:#0a0e1a;}
+body{font-family:'Segoe UI',sans-serif;background:var(--dark);color:#fff;}
+nav{position:fixed;top:0;width:100%;background:rgba(10,14,26,0.97);backdrop-filter:blur(16px);padding:12px 32px;display:flex;justify-content:space-between;align-items:center;z-index:1000;border-bottom:1px solid rgba(201,168,76,0.15);}
+.logo{display:flex;align-items:center;gap:10px;}
+.logo img{height:48px;border-radius:6px;}
+.logo-text{font-size:0.82em;font-weight:700;color:#fff;}
+.logo-text span{color:var(--gold);}
+.back-btn{padding:8px 20px;border:1px solid rgba(201,168,76,0.4);color:var(--gold);font-weight:600;border-radius:5px;text-decoration:none;font-size:0.82em;display:flex;align-items:center;gap:8px;transition:all 0.2s;white-space:nowrap;}
+.back-btn:hover{background:rgba(201,168,76,0.1);}
+.hero{min-height:75vh;position:relative;display:flex;align-items:flex-end;padding:60px 60px 72px;overflow:hidden;}
+.hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.52;}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(10,14,26,0.1),rgba(10,14,26,0.96));}
+.hero-content{position:relative;z-index:2;max-width:780px;}
+.breadcrumb{font-size:0.7em;color:#556070;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:14px;}
+.breadcrumb b{color:var(--gold);}
+.hero-badge{display:inline-block;padding:5px 18px;border:1px solid var(--gold);border-radius:50px;font-size:0.72em;color:var(--gold);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:18px;}
+.hero h1{font-size:3em;font-weight:900;line-height:1.1;margin-bottom:16px;}
+.hero h1 span{background:linear-gradient(90deg,var(--gold),#f5e070);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.hero-sub{color:#a0b0c8;font-size:1.02em;line-height:1.8;max-width:600px;margin-bottom:28px;}
+.btn-gold{padding:13px 32px;background:linear-gradient(135deg,var(--gold),#e8c060);color:#000;font-weight:700;border-radius:6px;text-decoration:none;font-size:0.9em;display:inline-block;transition:all 0.3s;}
+.btn-gold:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(201,168,76,0.4);}
+.content{max-width:1000px;margin:0 auto;padding:80px 40px;}
+.gold-line{width:100%;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:0.3;margin:56px 0;}
+.label{font-size:0.7em;color:var(--gold);text-transform:uppercase;letter-spacing:0.15em;font-weight:700;margin-bottom:8px;}
+.title{font-size:2em;font-weight:800;margin-bottom:14px;line-height:1.2;}
+.title span{background:linear-gradient(90deg,var(--gold),#f5e070);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.divider{width:52px;height:3px;background:linear-gradient(90deg,var(--gold),#f5e070);border-radius:2px;margin:14px 0 32px;}
+.article p{color:#c0ccd8;font-size:0.98em;line-height:1.95;margin-bottom:24px;font-weight:300;}
+.article p:first-child{font-size:1.05em;color:#d0dce8;font-weight:400;border-left:3px solid var(--gold);padding-left:22px;margin-bottom:28px;}
+.explore-btn{display:inline-flex;align-items:center;gap:10px;padding:13px 30px;background:linear-gradient(135deg,var(--gold),#e8c060);color:#000;font-weight:700;font-size:0.9em;border-radius:6px;text-decoration:none;transition:all 0.3s;margin-top:10px;letter-spacing:0.05em;}
+.explore-btn:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(201,168,76,0.4);}
+.explore-arrow{transition:transform 0.3s;}
+.explore-btn:hover .explore-arrow{transform:translateX(5px);}
+.gallery-hero{width:100%;height:460px;object-fit:cover;border-radius:18px;border:1px solid rgba(201,168,76,0.15);display:block;margin:44px 0 16px;}
+.gallery-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-bottom:40px;}
+.gallery-row img{width:100%;height:200px;object-fit:cover;border-radius:14px;border:1px solid rgba(201,168,76,0.1);display:block;}
+.hlights{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:18px;margin:32px 0;}
+.hbox{background:rgba(201,168,76,0.06);border:1px solid rgba(201,168,76,0.18);border-radius:14px;padding:24px;transition:all 0.3s;}
+.hbox:hover{border-color:rgba(201,168,76,0.45);transform:translateY(-4px);}
+.hbox-icon{font-size:1.8em;margin-bottom:12px;}
+.hbox h3{font-size:0.95em;font-weight:700;margin-bottom:7px;color:#e0e8f0;}
+.hbox p{font-size:0.82em;color:#6080a0;line-height:1.65;}
+.cta-box{background:linear-gradient(135deg,rgba(201,168,76,0.08),rgba(201,168,76,0.02));border:1px solid rgba(201,168,76,0.22);border-radius:18px;padding:52px;text-align:center;margin-top:56px;}
+.cta-box h2{font-size:1.8em;font-weight:800;margin-bottom:14px;}
+.cta-box p{color:#7090b0;margin-bottom:26px;max-width:480px;margin-left:auto;margin-right:auto;font-size:0.94em;line-height:1.7;}
+.btn-out{padding:13px 30px;border:1px solid rgba(201,168,76,0.5);color:var(--gold);font-weight:600;border-radius:6px;text-decoration:none;font-size:0.9em;display:inline-block;margin-left:12px;transition:all 0.3s;}
+.btn-out:hover{background:rgba(201,168,76,0.1);}
+footer{background:#03060e;padding:24px 40px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;border-top:1px solid rgba(201,168,76,0.1);margin-top:80px;}
+.fbrand{font-size:0.88em;font-weight:700;color:var(--gold);}
+.fcopy{font-size:0.76em;color:#2a3a4a;}
+@media(max-width:768px){nav{padding:10px 16px;}.logo img{height:40px;}.logo-text{font-size:0.74em;}.back-btn{padding:6px 14px;font-size:0.76em;}.hero{padding:88px 20px 52px;}.hero h1{font-size:2.1em;}.content{padding:52px 20px;}.gallery-hero{height:260px;}.gallery-row{grid-template-columns:1fr 1fr;}.gallery-row img{height:150px;}.hlights{grid-template-columns:1fr 1fr;}.cta-box{padding:32px 20px;}.btn-out{margin-left:0;margin-top:12px;display:block;width:fit-content;margin:12px auto 0;}footer{flex-direction:column;text-align:center;}}
+@media(max-width:480px){.hero h1{font-size:1.75em;}.gallery-row{grid-template-columns:1fr;}.hlights{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo"><img src="logo.png" alt="CIG" onerror="this.style.display='none'"><div class="logo-text"><span>Coordinate</span> International Global</div></div>
+  <a href="index.html" class="back-btn">← Back to Home</a>
+</nav>
+
+<section class="hero">
+  <img src="auto3.jpg" class="hero-img" alt="Autonomous Transport" onerror="this.src='https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1400'">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="breadcrumb">Automotive & Mobility <b>›</b> Autonomous Transport</div>
+    <div class="hero-badge">🤖 Autonomous Transport</div>
+    <h1>Self-Driving Technology<br><span>& Smart Mobility</span></h1>
+    <p class="hero-sub">CIG is advancing autonomous transport solutions to redefine the future of mobility across global markets — integrating AI, sensor technologies, and advanced navigation for safer and more efficient transportation.</p>
+    <a href="index.html#contact" class="btn-gold">Partner With CIG →</a>
+  </div>
+</section>
+
+<div class="content">
+
+  <div class="label">Overview</div>
+  <div class="title">Autonomous Transport — <span>The Future of Mobility</span></div>
+  <div class="divider"></div>
+  <div class="article">
+    <p>CIG is advancing autonomous transport solutions to redefine the future of mobility across global markets. By integrating artificial intelligence, sensor technologies, and advanced navigation systems, the company is developing self-operating transport networks designed for efficiency and safety. These systems aim to reduce human error while optimizing the movement of goods and people.</p>
+    <p>Through strategic partnerships and continuous innovation, CIG deploys autonomous solutions across logistics corridors, smart cities, and industrial zones. The technology enables real-time decision-making, adaptive routing, and seamless coordination between vehicles and infrastructure. This results in faster operations, lower costs, and improved reliability across complex transportation ecosystems.</p>
+    <p>CIG's autonomous transport initiatives are shaping a smarter and more connected mobility landscape. By enhancing safety standards and reducing environmental impact, the company contributes to sustainable urban and regional development. Ultimately, CIG is building the foundation for next-generation transportation systems powered by intelligence and automation.</p>
+  </div>
+  <a href="index.html#contact" class="explore-btn">Explore <span class="explore-arrow">→</span></a>
+
+  <img src="auto3.jpg" class="gallery-hero" alt="Autonomous Transport" onerror="this.src='https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200'">
+
+  <div class="gallery-row">
+    <img src="auto1.jpg" alt="AI Technology" onerror="this.src='https://images.unsplash.com/photo-1593941707882-a5bba14938c7?w=500'">
+    <img src="auto2.jpg" alt="Smart Vehicles" onerror="this.src='https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?w=500'">
+    <img src="auto3.jpg" alt="Autonomous Systems" onerror="this.src='https://images.unsplash.com/photo-1531297484001-80022131f5a1?w=500'">
+  </div>
+
+  <div class="gold-line"></div>
+
+  <div class="label">Strategic Focus</div>
+  <div class="title">What CIG Delivers in <span>Autonomous Transport</span></div>
+  <div class="divider"></div>
+
+  <div class="hlights">
+    <div class="hbox"><div class="hbox-icon">🤖</div><h3>AI Navigation Systems</h3><p>Artificial intelligence driving real-time decision-making, adaptive routing, and autonomous vehicle coordination.</p></div>
+    <div class="hbox"><div class="hbox-icon">📡</div><h3>Sensor Technologies</h3><p>Advanced sensor networks enabling vehicles to perceive, interpret, and respond to complex real-world environments.</p></div>
+    <div class="hbox"><div class="hbox-icon">🏙️</div><h3>Smart City Integration</h3><p>Autonomous solutions seamlessly integrated into smart city infrastructure and digital urban ecosystems.</p></div>
+    <div class="hbox"><div class="hbox-icon">🔒</div><h3>Safety Standards</h3><p>Rigorous safety protocols and redundant systems designed to minimize risk and protect passengers and goods.</p></div>
+    <div class="hbox"><div class="hbox-icon">🌱</div><h3>Environmental Impact</h3><p>Autonomous transport reducing emissions through optimized routing, reduced idling, and energy-efficient operations.</p></div>
+    <div class="hbox"><div class="hbox-icon">🚀</div><h3>Next-Gen Infrastructure</h3><p>Building the foundation for fully connected mobility networks powered by intelligence and automation.</p></div>
+  </div>
+
+  <div class="gold-line"></div>
+
+  <div class="cta-box">
+    <h2>Invest in <span style="color:var(--gold)">Autonomous Transport</span></h2>
+    <p>CIG welcomes technology partners, investors, and governments to join our autonomous transport development initiatives across global smart city markets.</p>
+    <a href="index.html#contact" class="btn-gold">Contact Our Team →</a>
+    <a href="index.html" class="btn-out">Back to Home</a>
+  </div>
+
+</div>
+
+<footer>
+  <div class="fbrand">CIG · Autonomous Transport — Automotive Division</div>
+  <div class="fcopy">© 2026 Coordinate International Global · All Rights Reserved</div>
+</footer>
+</body>
+</html>
