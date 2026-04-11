@@ -3,44 +3,65 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Indonesia – CIG Oil & Gas</title>
+<title>Indonesia – CIG Smart City & Energy</title>
 <style>
-*{margin:0;padding:0;box-sizing:border-box;}:root{--gold:#c9a84c;--dark:#0a0e1a;}
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{--gold:#c9a84c;--dark:#0a0e1a;}
 body{font-family:'Segoe UI',sans-serif;background:var(--dark);color:#fff;}
 nav{position:fixed;top:0;width:100%;background:rgba(10,14,26,0.97);backdrop-filter:blur(16px);padding:12px 32px;display:flex;justify-content:space-between;align-items:center;z-index:1000;border-bottom:1px solid rgba(201,168,76,0.15);}
-.logo{display:flex;align-items:center;gap:10px;}.logo img{height:48px;border-radius:6px;}.logo-text{font-size:0.82em;font-weight:700;color:#fff;}.logo-text span{color:var(--gold);}
-.back-btn{padding:8px 20px;border:1px solid rgba(201,168,76,0.4);color:var(--gold);font-weight:600;border-radius:5px;text-decoration:none;font-size:0.82em;display:flex;align-items:center;gap:8px;transition:all 0.2s;white-space:nowrap;}.back-btn:hover{background:rgba(201,168,76,0.1);}
+.logo{display:flex;align-items:center;gap:10px;}
+.logo img{height:48px;border-radius:6px;}
+.logo-text{font-size:0.82em;font-weight:700;color:#fff;}
+.logo-text span{color:var(--gold);}
+.back-btn{padding:8px 20px;border:1px solid rgba(201,168,76,0.4);color:var(--gold);font-weight:600;border-radius:5px;text-decoration:none;font-size:0.82em;display:flex;align-items:center;gap:8px;transition:all 0.2s;white-space:nowrap;}
+.back-btn:hover{background:rgba(201,168,76,0.1);}
 .hero{min-height:75vh;position:relative;display:flex;align-items:flex-end;padding:60px 60px 72px;overflow:hidden;}
-.hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.5;}
-.hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(10,14,26,0.2),rgba(10,14,26,0.96));}
+.hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.52;}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(10,14,26,0.1),rgba(10,14,26,0.96));}
 .hero-content{position:relative;z-index:2;max-width:780px;}
-.breadcrumb{font-size:0.7em;color:#556070;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:14px;}.breadcrumb b{color:var(--gold);}
-.hero-badge{display:inline-block;padding:5px 16px;border:1px solid var(--gold);border-radius:50px;font-size:0.72em;color:var(--gold);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:16px;}
-.hero h1{font-size:2.9em;font-weight:900;line-height:1.1;margin-bottom:14px;}
+.breadcrumb{font-size:0.7em;color:#556070;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:14px;}
+.breadcrumb b{color:var(--gold);}
+.hero-badge{display:inline-block;padding:5px 18px;border:1px solid var(--gold);border-radius:50px;font-size:0.72em;color:var(--gold);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:18px;}
+.hero h1{font-size:3em;font-weight:900;line-height:1.1;margin-bottom:16px;}
 .hero h1 span{background:linear-gradient(90deg,var(--gold),#f5e070);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
-.hero-sub{color:#a0b0c8;font-size:1em;line-height:1.8;max-width:580px;margin-bottom:24px;}
-.btn-gold{padding:12px 30px;background:linear-gradient(135deg,var(--gold),#e8c060);color:#000;font-weight:700;border-radius:5px;text-decoration:none;font-size:0.88em;display:inline-block;transition:all 0.3s;}.btn-gold:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(201,168,76,0.35);}
-.content{max-width:980px;margin:0 auto;padding:72px 40px;}
-.gold-line{width:100%;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:0.3;margin:52px 0;}
-.label{font-size:0.7em;color:var(--gold);text-transform:uppercase;letter-spacing:0.14em;font-weight:700;margin-bottom:8px;}
-.title{font-size:1.9em;font-weight:800;margin-bottom:12px;line-height:1.2;}.title span{background:linear-gradient(90deg,var(--gold),#f5e070);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
-.divider{width:48px;height:3px;background:linear-gradient(90deg,var(--gold),#f5e070);border-radius:2px;margin:12px 0 28px;}
-.article p{color:#c0ccd8;font-size:0.98em;line-height:1.95;margin-bottom:22px;font-weight:300;}
-.article p:first-child{font-size:1.04em;color:#d0dce8;font-weight:400;border-left:3px solid var(--gold);padding-left:20px;margin-bottom:26px;}
-.hlights{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:16px;margin:36px 0;}
-.hbox{background:rgba(201,168,76,0.06);border:1px solid rgba(201,168,76,0.18);border-radius:14px;padding:22px;transition:all 0.3s;}.hbox:hover{border-color:rgba(201,168,76,0.4);transform:translateY(-3px);}
-.hbox-icon{font-size:1.7em;margin-bottom:10px;}.hbox h3{font-size:0.93em;font-weight:700;margin-bottom:6px;color:#e0e8f0;}.hbox p{font-size:0.81em;color:#6080a0;line-height:1.6;}
-.gallery{display:grid;grid-template-columns:2fr 1fr;gap:14px;margin:36px 0;}
-.gal-main img{width:100%;height:360px;object-fit:cover;border-radius:16px;border:1px solid rgba(201,168,76,0.12);display:block;}
-.gal-side{display:flex;flex-direction:column;gap:14px;}.gal-side img{width:100%;height:173px;object-fit:cover;border-radius:13px;border:1px solid rgba(201,168,76,0.12);display:block;}
-.cta-box{background:linear-gradient(135deg,rgba(201,168,76,0.08),rgba(201,168,76,0.02));border:1px solid rgba(201,168,76,0.2);border-radius:18px;padding:48px;text-align:center;margin-top:52px;}
-.cta-box h2{font-size:1.7em;font-weight:800;margin-bottom:12px;}.cta-box p{color:#7090b0;margin-bottom:22px;max-width:460px;margin-left:auto;margin-right:auto;}
-.btn-out{padding:12px 28px;border:1px solid rgba(201,168,76,0.5);color:var(--gold);font-weight:600;border-radius:5px;text-decoration:none;font-size:0.88em;display:inline-block;margin-left:10px;transition:all 0.3s;}.btn-out:hover{background:rgba(201,168,76,0.1);}
-footer{background:#03060e;padding:22px 32px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;border-top:1px solid rgba(201,168,76,0.1);margin-top:72px;}
-.fbrand{font-size:0.86em;font-weight:700;color:var(--gold);}.fcopy{font-size:0.74em;color:#2a3a4a;}
-.reveal{opacity:0;transform:translateY(28px);transition:opacity 0.7s,transform 0.7s;}.reveal.visible{opacity:1;transform:translateY(0);}
-@media(max-width:768px){nav{padding:10px 16px;}.logo img{height:38px;}.back-btn{padding:6px 12px;font-size:0.74em;}.hero{padding:80px 18px 48px;}.hero h1{font-size:2em;}.content{padding:44px 18px;}.gallery{grid-template-columns:1fr;}.gal-side{flex-direction:row;}.gal-side img{height:140px;flex:1;}.hlights{grid-template-columns:1fr 1fr;}.cta-box{padding:28px 16px;}.btn-out{margin-left:0;margin-top:10px;display:block;width:fit-content;margin:10px auto 0;}footer{flex-direction:column;text-align:center;}}
-@media(max-width:480px){.hlights{grid-template-columns:1fr;}.gal-side{flex-direction:column;}}
+.hero-sub{color:#a0b0c8;font-size:1.02em;line-height:1.8;max-width:600px;margin-bottom:28px;}
+.btn-gold{padding:13px 32px;background:linear-gradient(135deg,var(--gold),#e8c060);color:#000;font-weight:700;border-radius:6px;text-decoration:none;font-size:0.9em;display:inline-block;transition:all 0.3s;}
+.btn-gold:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(201,168,76,0.4);}
+.content{max-width:1000px;margin:0 auto;padding:80px 40px;}
+.gold-line{width:100%;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:0.3;margin:56px 0;}
+.label{font-size:0.7em;color:var(--gold);text-transform:uppercase;letter-spacing:0.15em;font-weight:700;margin-bottom:8px;}
+.title{font-size:2em;font-weight:800;margin-bottom:14px;line-height:1.2;}
+.title span{background:linear-gradient(90deg,var(--gold),#f5e070);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.divider{width:52px;height:3px;background:linear-gradient(90deg,var(--gold),#f5e070);border-radius:2px;margin:14px 0 32px;}
+.article p{color:#c0ccd8;font-size:0.98em;line-height:1.95;margin-bottom:24px;font-weight:300;}
+.article p:first-child{font-size:1.05em;color:#d0dce8;font-weight:400;border-left:3px solid var(--gold);padding-left:22px;margin-bottom:28px;}
+.explore-btn{display:inline-flex;align-items:center;gap:10px;padding:13px 30px;background:linear-gradient(135deg,var(--gold),#e8c060);color:#000;font-weight:700;font-size:0.9em;border-radius:6px;text-decoration:none;transition:all 0.3s;margin-top:10px;letter-spacing:0.05em;}
+.explore-btn:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(201,168,76,0.4);}
+.explore-arrow{transition:transform 0.3s;}
+.explore-btn:hover .explore-arrow{transform:translateX(5px);}
+.gallery-hero{width:100%;height:460px;object-fit:cover;border-radius:18px;border:1px solid rgba(201,168,76,0.15);display:block;margin:44px 0 16px;transition:transform 0.5s ease;}
+.gallery-hero:hover{transform:scale(1.01);}
+.gallery-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-bottom:16px;}
+.gallery-row img{width:100%;height:200px;object-fit:cover;border-radius:14px;border:1px solid rgba(201,168,76,0.1);display:block;transition:transform 0.4s ease;}
+.gallery-row img:hover{transform:scale(1.04);}
+.hlights{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:18px;margin:44px 0;}
+.hbox{background:rgba(201,168,76,0.06);border:1px solid rgba(201,168,76,0.18);border-radius:14px;padding:24px;transition:all 0.3s;}
+.hbox:hover{border-color:rgba(201,168,76,0.45);transform:translateY(-4px);box-shadow:0 12px 32px rgba(0,0,0,0.3);}
+.hbox-icon{font-size:1.8em;margin-bottom:12px;}
+.hbox h3{font-size:0.95em;font-weight:700;margin-bottom:7px;color:#e0e8f0;}
+.hbox p{font-size:0.82em;color:#6080a0;line-height:1.65;}
+.cta-box{background:linear-gradient(135deg,rgba(201,168,76,0.08),rgba(201,168,76,0.02));border:1px solid rgba(201,168,76,0.22);border-radius:18px;padding:52px;text-align:center;margin-top:56px;}
+.cta-box h2{font-size:1.8em;font-weight:800;margin-bottom:14px;}
+.cta-box p{color:#7090b0;margin-bottom:26px;max-width:480px;margin-left:auto;margin-right:auto;font-size:0.94em;line-height:1.7;}
+.btn-out{padding:13px 30px;border:1px solid rgba(201,168,76,0.5);color:var(--gold);font-weight:600;border-radius:6px;text-decoration:none;font-size:0.9em;display:inline-block;margin-left:12px;transition:all 0.3s;}
+.btn-out:hover{background:rgba(201,168,76,0.1);}
+footer{background:#03060e;padding:24px 40px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;border-top:1px solid rgba(201,168,76,0.1);margin-top:80px;}
+.fbrand{font-size:0.88em;font-weight:700;color:var(--gold);}
+.fcopy{font-size:0.76em;color:#2a3a4a;}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity 0.7s,transform 0.7s;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+@media(max-width:768px){nav{padding:10px 16px;}.logo img{height:40px;}.logo-text{font-size:0.74em;}.back-btn{padding:6px 14px;font-size:0.76em;}.hero{padding:88px 20px 52px;}.hero h1{font-size:2.1em;}.content{padding:52px 20px;}.gallery-hero{height:260px;}.gallery-row{grid-template-columns:1fr 1fr;}.gallery-row img{height:150px;}.hlights{grid-template-columns:1fr 1fr;}.cta-box{padding:32px 20px;}.btn-out{margin-left:0;margin-top:12px;display:block;width:fit-content;margin:12px auto 0;}footer{flex-direction:column;text-align:center;}}
+@media(max-width:480px){.hero h1{font-size:1.75em;}.gallery-row{grid-template-columns:1fr;}.hlights{grid-template-columns:1fr;}}
 </style>
 </head>
 <body>
@@ -48,6 +69,7 @@ footer{background:#03060e;padding:22px 32px;display:flex;justify-content:space-b
   <div class="logo"><img src="logo.png" alt="CIG" onerror="this.style.display='none'"><div class="logo-text"><span>Coordinate</span> International Global</div></div>
   <a href="index.html" class="back-btn">← Back to Home</a>
 </nav>
+
 <section class="hero">
   <img src="oilgas1.jpg" class="hero-img" alt="Indonesia" onerror="this.src='https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=1400'">
   <div class="hero-overlay"></div>
@@ -55,10 +77,11 @@ footer{background:#03060e;padding:22px 32px;display:flex;justify-content:space-b
     <div class="breadcrumb">Oil & Gas <b>›</b> Indonesia</div>
     <div class="hero-badge">🇮🇩 Indonesia</div>
     <h1>Smart City &<br><span>Renewable Energy Expansion</span></h1>
-    <p class="hero-sub">CIG drives smart city development and renewable energy expansion across Indonesia's vast archipelago, building intelligent urban ecosystems integrated with sustainable energy solutions.</p>
+    <p class="hero-sub">Indonesia presents a major opportunity for smart city development and renewable energy expansion — building intelligent urban ecosystems that integrate digital infrastructure with sustainable energy solutions across the archipelago.</p>
     <a href="index.html#contact" class="btn-gold">Partner With CIG →</a>
   </div>
 </section>
+
 <div class="content">
   <div class="reveal">
     <div class="label">Overview</div>
@@ -69,29 +92,51 @@ footer{background:#03060e;padding:22px 32px;display:flex;justify-content:space-b
       <p>Projects focus on developing connected cities powered by renewable energy sources such as solar, wind, and hydroelectric systems. With CIG driving coordination and execution, these developments integrate smart grids, data-driven urban management, and energy-efficient infrastructure. The goal is to reduce dependence on fossil fuels while supporting rapid urbanization. Each initiative is designed to balance technological advancement with environmental responsibility and long-term scalability.</p>
       <p>Beyond infrastructure, these efforts contribute to economic growth by attracting investment, creating jobs, and fostering innovation ecosystems. CIG plays a strategic role in connecting public and private stakeholders to ensure efficient project delivery and sustainable impact. By strengthening connectivity across islands and modernizing urban systems, Indonesia can unlock new opportunities for growth. The long-term vision is to establish a network of smart, green cities that support a resilient and prosperous future.</p>
     </div>
+    <a href="index.html#contact" class="explore-btn">Explore <span class="explore-arrow">→</span></a>
   </div>
-  <div class="hlights reveal">
-    <div class="hbox"><div class="hbox-icon">🏙️</div><h3>Smart City Development</h3><p>Intelligent urban ecosystems integrating digital infrastructure and IoT-enabled services across key cities.</p></div>
-    <div class="hbox"><div class="hbox-icon">☀️</div><h3>Renewable Energy</h3><p>Solar, wind, and hydroelectric systems reducing fossil fuel dependence across the archipelago.</p></div>
-    <div class="hbox"><div class="hbox-icon">🔋</div><h3>Smart Grids</h3><p>Data-driven energy management and smart grid infrastructure for sustainable urban growth.</p></div>
-    <div class="hbox"><div class="hbox-icon">🌐</div><h3>Digital Infrastructure</h3><p>Connectivity and digital services across islands supporting economic integration and innovation.</p></div>
+
+  <img src="oilgas1.jpg" class="gallery-hero reveal" alt="Indonesia" onerror="this.src='https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=1200'">
+
+  <div class="gallery-row reveal">
+    <img src="smartcity1.png" alt="Smart City" onerror="this.src='https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?w=500'">
+    <img src="oilgas1.jpg" alt="Energy" onerror="this.src='https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=500'">
+    <img src="smartcity2.png" alt="Urban" onerror="this.src='https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=500'">
   </div>
-  <div class="gallery reveal">
-    <div class="gal-main"><img src="oilgas1.jpg" alt="Indonesia" onerror="this.src='https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=900'"></div>
-    <div class="gal-side">
-      <img src="smartcity1.png" alt="Smart City" onerror="this.src='https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?w=500'">
-      <img src="oilgas2.jpg" alt="Energy" onerror="this.src='https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?w=500'">
-    </div>
-  </div>
+
   <div class="gold-line"></div>
+
+  <div class="reveal">
+    <div class="label">Strategic Focus</div>
+    <div class="title">What CIG Delivers in <span>Indonesia</span></div>
+    <div class="divider"></div>
+  </div>
+
+  <div class="hlights reveal">
+    <div class="hbox"><div class="hbox-icon">🏙️</div><h3>Smart City Development</h3><p>Intelligent urban ecosystems integrating digital infrastructure and IoT-enabled services across key Indonesian cities.</p></div>
+    <div class="hbox"><div class="hbox-icon">☀️</div><h3>Renewable Energy</h3><p>Solar, wind, and hydroelectric systems reducing fossil fuel dependence across the archipelago's diverse regions.</p></div>
+    <div class="hbox"><div class="hbox-icon">🔋</div><h3>Smart Grids</h3><p>Data-driven energy management and smart grid infrastructure supporting sustainable urban growth nationwide.</p></div>
+    <div class="hbox"><div class="hbox-icon">🌐</div><h3>Digital Connectivity</h3><p>Advanced connectivity and digital services across islands supporting economic integration and innovation ecosystems.</p></div>
+    <div class="hbox"><div class="hbox-icon">👷</div><h3>Job Creation</h3><p>Infrastructure programs generating employment and fostering local innovation across Indonesia's fast-growing economy.</p></div>
+    <div class="hbox"><div class="hbox-icon">🤝</div><h3>Public-Private Synergy</h3><p>CIG connects public and private stakeholders to ensure efficient delivery and maximum sustainable impact.</p></div>
+  </div>
+
+  <div class="gold-line"></div>
+
   <div class="cta-box reveal">
     <h2>Invest in <span style="color:var(--gold)">Indonesia</span></h2>
-    <p>CIG welcomes strategic investors and government partners to join Indonesia's smart city and renewable energy transformation.</p>
+    <p>CIG welcomes strategic investors and government partners to join Indonesia's smart city and renewable energy transformation across the archipelago.</p>
     <a href="index.html#contact" class="btn-gold">Contact Our Team →</a>
     <a href="index.html" class="btn-out">Back to Home</a>
   </div>
 </div>
-<footer><div class="fbrand">CIG · Indonesia Division</div><div class="fcopy">© 2026 Coordinate International Global · All Rights Reserved</div></footer>
-<script>const obs=new IntersectionObserver(e=>{e.forEach(el=>{if(el.isIntersecting){el.target.classList.add('visible');obs.unobserve(el.target);}});},{threshold:0.1});document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));</script>
+
+<footer>
+  <div class="fbrand">CIG · Indonesia — Smart City & Energy Division</div>
+  <div class="fcopy">© 2026 Coordinate International Global · All Rights Reserved</div>
+</footer>
+<script>
+const obs=new IntersectionObserver(e=>{e.forEach(el=>{if(el.isIntersecting){el.target.classList.add('visible');obs.unobserve(el.target);}});},{threshold:0.1});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
 </body>
 </html>
