@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Latin America Supply Chain – CIG</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{--gold:#c9a84c;--dark:#0a0e1a;}
+body{font-family:'Segoe UI',sans-serif;background:var(--dark);color:#fff;}
+nav{position:fixed;top:0;width:100%;background:rgba(10,14,26,0.97);backdrop-filter:blur(16px);padding:12px 32px;display:flex;justify-content:space-between;align-items:center;z-index:1000;border-bottom:1px solid rgba(201,168,76,0.15);}
+.logo{display:flex;align-items:center;gap:10px;}
+.logo img{height:48px;border-radius:6px;}
+.logo-text{font-size:0.82em;font-weight:700;color:#fff;}
+.logo-text span{color:var(--gold);}
+.back-btn{padding:8px 20px;border:1px solid rgba(201,168,76,0.4);color:var(--gold);font-weight:600;border-radius:5px;text-decoration:none;font-size:0.82em;display:flex;align-items:center;gap:8px;transition:all 0.2s;white-space:nowrap;}
+.back-btn:hover{background:rgba(201,168,76,0.1);}
+.hero{min-height:75vh;position:relative;display:flex;align-items:flex-end;padding:60px 60px 72px;overflow:hidden;}
+.hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.52;}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(10,14,26,0.1),rgba(10,14,26,0.96));}
+.hero-content{position:relative;z-index:2;max-width:780px;}
+.breadcrumb{font-size:0.7em;color:#556070;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:14px;}
+.breadcrumb b{color:var(--gold);}
+.hero-badge{display:inline-block;padding:5px 18px;border:1px solid var(--gold);border-radius:50px;font-size:0.72em;color:var(--gold);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:18px;}
+.hero h1{font-size:3em;font-weight:900;line-height:1.1;margin-bottom:16px;}
+.hero h1 span{background:linear-gradient(90deg,var(--gold),#f5e070);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.hero-sub{color:#a0b0c8;font-size:1.02em;line-height:1.8;max-width:600px;margin-bottom:28px;}
+.btn-gold{padding:13px 32px;background:linear-gradient(135deg,var(--gold),#e8c060);color:#000;font-weight:700;border-radius:6px;text-decoration:none;font-size:0.9em;display:inline-block;transition:all 0.3s;}
+.btn-gold:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(201,168,76,0.4);}
+.content{max-width:1000px;margin:0 auto;padding:80px 40px;}
+.gold-line{width:100%;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:0.3;margin:56px 0;}
+.label{font-size:0.7em;color:var(--gold);text-transform:uppercase;letter-spacing:0.15em;font-weight:700;margin-bottom:8px;}
+.title{font-size:2em;font-weight:800;margin-bottom:14px;line-height:1.2;}
+.title span{background:linear-gradient(90deg,var(--gold),#f5e070);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.divider{width:52px;height:3px;background:linear-gradient(90deg,var(--gold),#f5e070);border-radius:2px;margin:14px 0 32px;}
+.article p{color:#c0ccd8;font-size:0.98em;line-height:1.95;margin-bottom:24px;font-weight:300;}
+.article p:first-child{font-size:1.05em;color:#d0dce8;font-weight:400;border-left:3px solid var(--gold);padding-left:22px;margin-bottom:28px;}
+.explore-btn{display:inline-flex;align-items:center;gap:10px;padding:13px 30px;background:linear-gradient(135deg,var(--gold),#e8c060);color:#000;font-weight:700;font-size:0.9em;border-radius:6px;text-decoration:none;transition:all 0.3s;margin-top:10px;letter-spacing:0.05em;}
+.explore-btn:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(201,168,76,0.4);}
+.explore-arrow{transition:transform 0.3s;}
+.explore-btn:hover .explore-arrow{transform:translateX(5px);}
+.gallery-hero{width:100%;height:460px;object-fit:cover;border-radius:18px;border:1px solid rgba(201,168,76,0.15);display:block;margin:44px 0 16px;transition:transform 0.5s ease;}
+.gallery-hero:hover{transform:scale(1.01);}
+.gallery-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-bottom:16px;}
+.gallery-row img{width:100%;height:200px;object-fit:cover;border-radius:14px;border:1px solid rgba(201,168,76,0.1);display:block;transition:transform 0.4s ease;}
+.gallery-row img:hover{transform:scale(1.04);}
+.hlights{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:18px;margin:44px 0;}
+.hbox{background:rgba(201,168,76,0.06);border:1px solid rgba(201,168,76,0.18);border-radius:14px;padding:24px;transition:all 0.3s;}
+.hbox:hover{border-color:rgba(201,168,76,0.45);transform:translateY(-4px);box-shadow:0 12px 32px rgba(0,0,0,0.3);}
+.hbox-icon{font-size:1.8em;margin-bottom:12px;}
+.hbox h3{font-size:0.95em;font-weight:700;margin-bottom:7px;color:#e0e8f0;}
+.hbox p{font-size:0.82em;color:#6080a0;line-height:1.65;}
+.cta-box{background:linear-gradient(135deg,rgba(201,168,76,0.08),rgba(201,168,76,0.02));border:1px solid rgba(201,168,76,0.22);border-radius:18px;padding:52px;text-align:center;margin-top:56px;}
+.cta-box h2{font-size:1.8em;font-weight:800;margin-bottom:14px;}
+.cta-box p{color:#7090b0;margin-bottom:26px;max-width:480px;margin-left:auto;margin-right:auto;font-size:0.94em;line-height:1.7;}
+.btn-out{padding:13px 30px;border:1px solid rgba(201,168,76,0.5);color:var(--gold);font-weight:600;border-radius:6px;text-decoration:none;font-size:0.9em;display:inline-block;margin-left:12px;transition:all 0.3s;}
+.btn-out:hover{background:rgba(201,168,76,0.1);}
+footer{background:#03060e;padding:24px 40px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;border-top:1px solid rgba(201,168,76,0.1);margin-top:80px;}
+.fbrand{font-size:0.88em;font-weight:700;color:var(--gold);}
+.fcopy{font-size:0.76em;color:#2a3a4a;}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity 0.7s,transform 0.7s;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+@media(max-width:768px){nav{padding:10px 16px;}.logo img{height:40px;}.logo-text{font-size:0.74em;}.back-btn{padding:6px 14px;font-size:0.76em;}.hero{padding:88px 20px 52px;}.hero h1{font-size:2.1em;}.content{padding:52px 20px;}.gallery-hero{height:260px;}.gallery-row{grid-template-columns:1fr 1fr;}.gallery-row img{height:150px;}.hlights{grid-template-columns:1fr 1fr;}.cta-box{padding:32px 20px;}.btn-out{margin-left:0;margin-top:12px;display:block;width:fit-content;margin:12px auto 0;}footer{flex-direction:column;text-align:center;}}
+@media(max-width:480px){.hero h1{font-size:1.75em;}.gallery-row{grid-template-columns:1fr;}.hlights{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<nav>
+  <div class="logo"><img src="logo.png" alt="CIG" onerror="this.style.display='none'"><div class="logo-text"><span>Coordinate</span> International Global</div></div>
+  <a href="index.html" class="back-btn">← Back to Home</a>
+</nav>
+
+<section class="hero">
+  <img src="agri2.jpg" class="hero-img" alt="Latin America Supply Chain" onerror="this.src='https://images.unsplash.com/photo-1500595046743-cd271d694d30?w=1400'">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="breadcrumb">Agri-Food & Resources <b>›</b> Latin America Supply Chain</div>
+    <div class="hero-badge">🌎 Latin America Supply Chain</div>
+    <h1>Integrated Supply Chains<br><span>Across Latin America</span></h1>
+    <p class="hero-sub">CIG is strengthening supply chain networks across Latin America to improve the movement of goods within the region and to global markets — boosting regional competitiveness and economic integration.</p>
+    <a href="index.html#contact" class="btn-gold">Partner With CIG →</a>
+  </div>
+</section>
+
+<div class="content">
+  <div class="reveal">
+    <div class="label">Overview</div>
+    <div class="title">Latin America Supply Chain — <span>Connecting Regions to Global Markets</span></div>
+    <div class="divider"></div>
+    <div class="article">
+      <p>CIG is strengthening supply chain networks across Latin America to improve the movement of goods within the region and to global markets. By investing in logistics infrastructure, transportation corridors, and digital tracking systems, CIG enhances efficiency and reliability. These efforts reduce bottlenecks and ensure faster, more cost-effective delivery of goods.</p>
+      <p>The company works closely with regional partners to optimize supply chain operations across multiple industries, including agriculture, energy, and manufacturing. Advanced technologies are implemented to improve transparency, forecasting, and risk management. This integrated approach supports businesses in scaling operations and expanding internationally.</p>
+      <p>CIG's supply chain strategy in Latin America is designed to boost regional competitiveness and economic integration. By connecting producers to international markets, the company helps unlock new trade opportunities. This strengthens the region's position in global commerce while driving sustainable development.</p>
+    </div>
+    <a href="index.html#contact" class="explore-btn">Explore <span class="explore-arrow">→</span></a>
+  </div>
+
+  <img src="agri2.jpg" class="gallery-hero reveal" alt="Latin America Supply Chain" onerror="this.src='https://images.unsplash.com/photo-1500595046743-cd271d694d30?w=1200'">
+
+  <div class="gallery-row reveal">
+    <img src="agri1.jpg" alt="Agriculture" onerror="this.src='https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=500'">
+    <img src="agri2.jpg" alt="Logistics" onerror="this.src='https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=500'">
+    <img src="agri3.jpg" alt="Export" onerror="this.src='https://images.unsplash.com/photo-1464226184884-fa280b87c399?w=500'">
+  </div>
+
+  <div class="gold-line"></div>
+
+  <div class="reveal">
+    <div class="label">Strategic Focus</div>
+    <div class="title">What CIG Delivers in <span>Latin America</span></div>
+    <div class="divider"></div>
+  </div>
+
+  <div class="hlights reveal">
+    <div class="hbox"><div class="hbox-icon">🚛</div><h3>Logistics Infrastructure</h3><p>Investment in transportation corridors, warehousing, and distribution networks across key Latin American markets.</p></div>
+    <div class="hbox"><div class="hbox-icon">📡</div><h3>Digital Tracking Systems</h3><p>Real-time visibility and digital platforms improving transparency and operational efficiency across supply chains.</p></div>
+    <div class="hbox"><div class="hbox-icon">🔗</div><h3>Regional Integration</h3><p>Connecting producers across Ecuador, Peru, Venezuela, and beyond to international buyers and export channels.</p></div>
+    <div class="hbox"><div class="hbox-icon">📊</div><h3>Risk Management</h3><p>Advanced forecasting and analytics minimizing supply chain disruptions and improving delivery reliability.</p></div>
+    <div class="hbox"><div class="hbox-icon">🌎</div><h3>Global Market Access</h3><p>Opening new trade opportunities for regional producers by connecting them directly to international markets.</p></div>
+    <div class="hbox"><div class="hbox-icon">🌱</div><h3>Sustainable Development</h3><p>Supply chain strategies aligned with environmental responsibility and long-term economic resilience.</p></div>
+  </div>
+
+  <div class="gold-line"></div>
+
+  <div class="cta-box reveal">
+    <h2>Invest in <span style="color:var(--gold)">Latin America Supply Chain</span></h2>
+    <p>CIG welcomes logistics investors and trade partners to join our supply chain development initiatives across Latin America.</p>
+    <a href="index.html#contact" class="btn-gold">Contact Our Team →</a>
+    <a href="index.html" class="btn-out">Back to Home</a>
+  </div>
+</div>
+
+<footer>
+  <div class="fbrand">CIG · Latin America Supply Chain Division</div>
+  <div class="fcopy">© 2026 Coordinate International Global · All Rights Reserved</div>
+</footer>
+<script>
+const obs=new IntersectionObserver(e=>{e.forEach(el=>{if(el.isIntersecting){el.target.classList.add('visible');obs.unobserve(el.target);}});},{threshold:0.1});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
