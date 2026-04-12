@@ -196,7 +196,76 @@ footer nav a{color:#405060;font-size:0.8em;text-decoration:none;transition:color
 footer nav a:hover{color:var(--gold);}
 .footer-copy{font-size:0.78em;color:#2a3a4a;width:100%;text-align:center;padding-top:20px;border-top:1px solid rgba(255,255,255,0.04);margin-top:8px;}
 .gold-line{width:100%;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:0.3;}
-/* STRATEGIC HIGHLIGHTS TICKER */ .strat-ticker-wrapper{ ... ... } @keyframes { fadeInDown}{from{opacity:0;transform:translateY(-30px);}to{opacity:1;transform:translateY(0);}} @keyframes fadeInUp{from{opacity:0;transform:translateY(30px);}to{opacity:1;transform:translateY(0);}} </style> </head> <body>
+/* STRATEGIC HIGHLIGHTS TICKER */ .strat-ticker-wrapper{ ... ... } @keyframes { fadeInDown}{from{opacity:0;transform:translateY(-30px);}to{opacity:1;transform:translateY(0);}} @keyframes fadeInUp{from{opacity:0;transform:translateY(30px);}to{opacity:1;transform:translateY(0);}} /* TICKER 2 */
+.ticker2-wrapper{
+  position:relative;
+  width:100%;
+  height:48px;
+  background:linear-gradient(90deg,#020508,#060a14,#020508);
+  border-top:1px solid rgba(201,168,76,0.2);
+  border-bottom:1px solid rgba(201,168,76,0.2);
+  overflow:hidden;
+  display:flex;
+  align-items:center;
+}
+.ticker2-fade-left{
+  position:absolute;
+  left:0;top:0;bottom:0;
+  width:100px;
+  background:linear-gradient(to right,#020508,transparent);
+  z-index:2;
+  pointer-events:none;
+}
+.ticker2-fade-right{
+  position:absolute;
+  right:0;top:0;bottom:0;
+  width:100px;
+  background:linear-gradient(to left,#020508,transparent);
+  z-index:2;
+  pointer-events:none;
+}
+.ticker2-track{
+  width:100%;
+  overflow:hidden;
+}
+.ticker2-inner{
+  display:inline-flex;
+  align-items:center;
+  white-space:nowrap;
+  animation:ticker2Scroll 45s linear infinite;
+  will-change:transform;
+}
+.ticker2-inner:hover{
+  animation-play-state:paused;
+}
+.t2-item{
+  display:inline-block;
+  font-size:0.72em;
+  font-weight:700;
+  color:#6a7a8a;
+  letter-spacing:0.12em;
+  text-transform:uppercase;
+  padding:0 20px;
+  flex-shrink:0;
+}
+.t2-gold{
+  color:var(--gold);
+  font-weight:800;
+}
+.t2-sep{
+  color:rgba(201,168,76,0.5);
+  font-size:0.8em;
+  padding:0 4px;
+  flex-shrink:0;
+}
+@keyframes ticker2Scroll{
+  0%{transform:translateX(0);}
+  100%{transform:translateX(-50%);}
+}
+@media(max-width:768px){
+  .ticker2-wrapper{height:40px;}
+  .t2-item{font-size:0.64em;padding:0 14px;letter-spacing:0.08em;}
+}</style> </head> <body>
 
 <div class="cursor" id="cursor"></div>
 <div class="cursor-follower" id="cursorFollower"></div>
