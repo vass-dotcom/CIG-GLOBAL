@@ -71,7 +71,6 @@ nav.scrolled{padding:8px 24px;}
 .ticker-change.up{color:#22c55e;}
 .ticker-change.down{color:#ef4444;}
 @keyframes ticker{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
-
 .reveal{opacity:0;transform:translateY(40px);transition:opacity 0.8s ease,transform 0.8s ease;}
 .reveal.visible{opacity:1;transform:translateY(0);}
 .reveal-left{opacity:0;transform:translateX(-40px);transition:opacity 0.8s ease,transform 0.8s ease;}
@@ -130,7 +129,6 @@ h2.section-title .accent{background:linear-gradient(90deg,var(--gold),#f5e070);-
 .energy-icon{font-size:2.2em;margin-bottom:14px;}
 .energy-card h3{font-size:1.05em;font-weight:700;margin-bottom:10px;color:#e0e8f0;}
 .energy-card p{font-size:0.86em;color:#6080a0;line-height:1.7;}
-/* TOURISM */
 .tourism-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px;margin-top:48px;}
 .tourism-card{border-radius:18px;overflow:hidden;position:relative;cursor:pointer;box-shadow:0 8px 32px rgba(0,0,0,0.4);transition:transform 0.3s,box-shadow 0.3s;}
 .tourism-card:hover{transform:translateY(-6px);box-shadow:0 20px 48px rgba(0,0,0,0.5);}
@@ -143,14 +141,12 @@ h2.section-title .accent{background:linear-gradient(90deg,var(--gold),#f5e070);-
 .tourism-title.gold-text{background:linear-gradient(90deg,var(--gold),#f5e070);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
 .tourism-desc{font-size:0.81em;color:#b8c8d8;line-height:1.6;margin-bottom:16px;}
 .tourism-btn{display:inline-flex;align-items:center;gap:6px;padding:8px 18px;background:linear-gradient(135deg,var(--gold),#e8c060);color:#000;font-weight:700;font-size:0.76em;border-radius:5px;}
-/* LAND & RAIL */
 .landrail-main{margin-top:48px;border-radius:18px;overflow:hidden;position:relative;cursor:pointer;}
 .landrail-main img{width:100%;height:420px;object-fit:cover;display:block;transition:transform 0.6s;}
 .landrail-main:hover img{transform:scale(1.03);}
 .landrail-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(10,14,26,0.05),rgba(10,14,26,0.85));pointer-events:none;}
 .landrail-info{position:absolute;bottom:0;left:0;right:0;padding:28px;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:16px;}
 .landrail-2col{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:20px;}
-/* PRESENCE */
 .presence-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:22px;margin-top:52px;}
 .region-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:14px;overflow:hidden;transition:all 0.3s;}
 .region-card:hover{border-color:rgba(201,168,76,0.3);transform:translateY(-4px);}
@@ -161,7 +157,6 @@ h2.section-title .accent{background:linear-gradient(90deg,var(--gold),#f5e070);-
 .country-list li{padding:5px 0;border-bottom:1px solid rgba(255,255,255,0.04);font-size:0.84em;color:#8090b0;display:flex;align-items:center;gap:8px;}
 .country-list li:last-child{border-bottom:none;}
 .country-list li::before{content:'›';color:var(--gold);font-weight:700;}
-/* LEADERSHIP */
 .leadership-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:28px;margin-top:52px;}
 .leader-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:14px;padding:28px;transition:all 0.4s;text-align:left;}
 .leader-card:hover{border-color:rgba(201,168,76,0.35);transform:translateY(-6px);}
@@ -220,27 +215,9 @@ footer nav a:hover{color:var(--gold);}
 @keyframes fadeInDown{from{opacity:0;transform:translateY(-30px);}to{opacity:1;transform:translateY(0);}}
 @keyframes fadeInUp{from{opacity:0;transform:translateY(30px);}to{opacity:1;transform:translateY(0);}}
 
-/* ════════════════════════
-   📱 MOBILE RESPONSIVE
-════════════════════════ */
 @media(max-width:900px){
   .hamburger{display:flex;}
-  .nav-links{
-    display:none;
-    position:fixed;top:0;left:0;
-    width:100%;height:100vh;
-    background:rgba(6,10,20,0.98);
-    backdrop-filter:blur(24px);
-    -webkit-backdrop-filter:blur(24px);
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    gap:20px;
-    z-index:1001;
-    padding:80px 24px 40px;
-    overflow-y:auto;
-    -webkit-overflow-scrolling:touch;
-  }
+  .nav-links{display:none;position:fixed;top:0;left:0;width:100%;height:100vh;background:rgba(6,10,20,0.98);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);flex-direction:column;justify-content:center;align-items:center;gap:20px;z-index:1001;padding:80px 24px 40px;overflow-y:auto;-webkit-overflow-scrolling:touch;}
   .nav-links.open{display:flex;}
   .nav-links li{width:100%;text-align:center;}
   .nav-links a{font-size:1.05em;padding:10px 0;display:block;}
@@ -294,6 +271,67 @@ footer nav a:hover{color:var(--gold);}
   .logo img{height:36px;}
   footer nav{grid-template-columns:1fr;}
 }
+
+/* ═══════════════════════════════
+   SHARE BUTTON — ajout propre
+═══════════════════════════════ */
+.cig-share-btn{
+  position:absolute;top:12px;right:12px;z-index:30;
+  display:inline-flex;align-items:center;gap:6px;
+  padding:7px 13px;
+  background:rgba(8,12,22,0.82);
+  border:1px solid rgba(201,168,76,0.55);
+  border-radius:22px;
+  color:var(--gold);font-size:0.72em;font-weight:700;letter-spacing:0.05em;
+  cursor:pointer;backdrop-filter:blur(10px);
+  transition:all 0.22s;
+  opacity:0;transform:translateY(-6px);
+  user-select:none;
+}
+.cig-share-btn svg{width:13px;height:13px;fill:var(--gold);flex-shrink:0;}
+.subsection-card:hover .cig-share-btn,
+.tourism-card:hover .cig-share-btn,
+.cig-share-btn.active{opacity:1;transform:translateY(0);}
+@media(hover:none){.cig-share-btn{opacity:1;transform:translateY(0);}}
+.cig-share-btn:hover{background:rgba(201,168,76,0.18);border-color:var(--gold);}
+
+.cig-share-drop{
+  position:absolute;top:48px;right:12px;z-index:200;
+  width:268px;
+  background:rgba(7,11,21,0.97);
+  border:1px solid rgba(201,168,76,0.22);
+  border-radius:16px;padding:16px;
+  box-shadow:0 20px 56px rgba(0,0,0,0.75);
+  backdrop-filter:blur(22px);
+  opacity:0;pointer-events:none;
+  transform:translateY(-8px) scale(0.96);
+  transition:all 0.22s cubic-bezier(0.175,0.885,0.32,1.275);
+}
+.cig-share-drop.open{opacity:1;pointer-events:all;transform:translateY(0) scale(1);}
+.csd-title{font-size:0.65em;color:#5a6878;text-transform:uppercase;letter-spacing:0.12em;font-weight:700;padding-bottom:10px;margin-bottom:12px;border-bottom:1px solid rgba(255,255,255,0.06);}
+.csd-label{font-size:0.6em;color:#4a5868;text-transform:uppercase;letter-spacing:0.1em;font-weight:700;margin:10px 0 7px 2px;}
+.csd-grid{display:grid;grid-template-columns:1fr 1fr;gap:7px;}
+.csd-item{
+  display:flex;align-items:center;gap:8px;
+  padding:9px 11px;border-radius:10px;
+  border:1px solid rgba(255,255,255,0.06);
+  background:rgba(255,255,255,0.03);
+  cursor:pointer;text-decoration:none;
+  color:#b0bcc8;font-size:0.76em;font-weight:600;
+  transition:all 0.18s;
+}
+.csd-item:hover{background:rgba(255,255,255,0.09);border-color:rgba(255,255,255,0.15);transform:translateY(-2px);}
+.csd-ico{width:26px;height:26px;border-radius:7px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:0.85em;font-weight:900;color:#fff;}
+.n-li .csd-ico{background:#0A66C2;}
+.n-tw .csd-ico{background:#000;}
+.n-fb .csd-ico{background:#1877F2;}
+.n-ig .csd-ico{background:linear-gradient(135deg,#f09433,#dc2743,#bc1888);}
+.n-wa .csd-ico{background:#25D366;}
+.n-tg .csd-ico{background:#26A5E4;}
+.n-em .csd-ico{background:var(--gold);color:#000;}
+.n-cp .csd-ico{background:rgba(255,255,255,0.1);}
+.csd-copied{display:none;text-align:center;font-size:0.7em;color:#22c55e;font-weight:700;padding:7px 0 2px;}
+.csd-copied.show{display:block;}
 </style>
 </head>
 <body>
@@ -686,10 +724,8 @@ footer nav a:hover{color:var(--gold);}
 </footer>
 
 <script>
-/* ── DÉTECTION TOUCH ── */
 const isTouch = ('ontouchstart' in window) || navigator.maxTouchPoints > 0;
 
-/* ── CURSOR (desktop mouse uniquement) ── */
 if(!isTouch){
   const cur = document.getElementById('cursor');
   const fol = document.getElementById('cursorFollower');
@@ -704,12 +740,10 @@ if(!isTouch){
   });
 }
 
-/* ── VIDEO FALLBACK ── */
 (function(){
   const vid  = document.getElementById('heroVideo');
   const hero = document.getElementById('heroSection');
   if(!vid) return;
-  // Timeout : si en 4s la vidéo n'a pas démarré → image de fond
   let timer = setTimeout(()=>{ hero.classList.add('video-failed'); }, 4000);
   vid.addEventListener('playing',()=>{ clearTimeout(timer); });
   vid.addEventListener('error',  ()=>{ hero.classList.add('video-failed'); });
@@ -717,7 +751,6 @@ if(!isTouch){
   if(p !== undefined) p.catch(()=>{ hero.classList.add('video-failed'); });
 })();
 
-/* ── HAMBURGER ── */
 const ham   = document.getElementById('hamburger');
 const links = document.getElementById('navLinks');
 ham.addEventListener('click',()=>{
@@ -741,7 +774,6 @@ document.addEventListener('click',e=>{
   }
 });
 
-/* ── SCROLL ── */
 const prog = document.getElementById('scrollProgress');
 window.addEventListener('scroll',()=>{
   const s=window.scrollY, h=document.documentElement.scrollHeight-window.innerHeight;
@@ -749,11 +781,9 @@ window.addEventListener('scroll',()=>{
   document.getElementById('navbar').classList.toggle('scrolled',s>80);
 },{passive:true});
 
-/* ── REVEAL ── */
 const obs = new IntersectionObserver(en=>{en.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}});},{threshold:0.08});
 document.querySelectorAll('.reveal,.reveal-left,.reveal-right').forEach(r=>obs.observe(r));
 
-/* ── PARTICLES desktop only ── */
 if(!isTouch){
   const c=document.getElementById('particleCanvas');
   if(c){const x=c.getContext('2d');c.width=innerWidth;c.height=innerHeight;
@@ -763,7 +793,6 @@ if(!isTouch){
   }
 }
 
-/* ── TICKER ── */
 async function loadTicker(){
   try{
     const items=[];
@@ -780,7 +809,84 @@ async function loadTicker(){
   }catch(e){const el=document.getElementById('tickerInner');if(el)el.innerHTML='<span style="color:#6080a0;padding:0 24px;line-height:44px;font-size:0.82em;">Active markets: Southeast Asia · Latin America · Africa · Middle East</span>';}
 }
 loadTicker();setInterval(loadTicker,60000);
+
+/* ═══════════════════════════════════════
+   SHARE BUTTONS — injection automatique
+═══════════════════════════════════════ */
+const SHARE_DROP = `
+<div class="cig-share-drop" onclick="event.stopPropagation()">
+  <div class="csd-title">📤 Share this</div>
+  <div class="csd-label">💼 Professional</div>
+  <div class="csd-grid">
+    <a class="csd-item n-li" href="#" onclick="cigShareOn('linkedin',this);return false;"><span class="csd-ico">in</span>LinkedIn</a>
+    <a class="csd-item n-tw" href="#" onclick="cigShareOn('twitter',this);return false;"><span class="csd-ico">𝕏</span>X / Twitter</a>
+  </div>
+  <div class="csd-label">📱 Social Media</div>
+  <div class="csd-grid">
+    <a class="csd-item n-fb" href="#" onclick="cigShareOn('facebook',this);return false;"><span class="csd-ico">f</span>Facebook</a>
+    <a class="csd-item n-ig" href="#" onclick="cigShareOn('instagram',this);return false;"><span class="csd-ico">📷</span>Instagram</a>
+    <a class="csd-item n-wa" href="#" onclick="cigShareOn('whatsapp',this);return false;"><span class="csd-ico">💬</span>WhatsApp</a>
+    <a class="csd-item n-tg" href="#" onclick="cigShareOn('telegram',this);return false;"><span class="csd-ico">✈️</span>Telegram</a>
+  </div>
+  <div class="csd-label">📧 Other</div>
+  <div class="csd-grid">
+    <a class="csd-item n-em" href="#" onclick="cigShareOn('email',this);return false;"><span class="csd-ico">✉️</span>Email</a>
+    <a class="csd-item n-cp" href="#" onclick="cigShareOn('copy',this);return false;"><span class="csd-ico">🔗</span>Copy link</a>
+  </div>
+  <div class="csd-copied">✅ Link copied!</div>
+</div>`;
+
+const SVG_SHARE = `<svg viewBox="0 0 24 24"><path d="M18 16a3 3 0 00-2.4 1.2L8.9 13.7a3 3 0 000-3.4l6.7-3.5A3 3 0 1014.3 4l-7 3.6a3 3 0 100 4.8l7 3.6A3 3 0 1018 16z"/></svg>`;
+
+document.querySelectorAll('.subsection-card, .tourism-card').forEach(card => {
+  const btn = document.createElement('button');
+  btn.className = 'cig-share-btn';
+  btn.innerHTML = SVG_SHARE + ' Share';
+  btn.setAttribute('aria-label', 'Share');
+  btn.addEventListener('click', function(e){
+    e.stopPropagation();
+    const drop = this.nextElementSibling;
+    const isOpen = drop.classList.contains('open');
+    document.querySelectorAll('.cig-share-drop.open').forEach(d=>d.classList.remove('open'));
+    document.querySelectorAll('.cig-share-btn.active').forEach(b=>b.classList.remove('active'));
+    if(!isOpen){ drop.classList.add('open'); this.classList.add('active'); }
+  });
+  card.appendChild(btn);
+  const drop = document.createElement('div');
+  drop.innerHTML = SHARE_DROP;
+  card.appendChild(drop.firstElementChild);
+});
+
+document.addEventListener('click', () => {
+  document.querySelectorAll('.cig-share-drop.open').forEach(d=>d.classList.remove('open'));
+  document.querySelectorAll('.cig-share-btn.active').forEach(b=>b.classList.remove('active'));
+});
+
+function cigShareOn(network, el){
+  const url  = encodeURIComponent(window.location.href);
+  const text = encodeURIComponent('Discover CIG — Coordinate International Global | Building Tomorrow\'s Global Infrastructure');
+  let link = '';
+  switch(network){
+    case 'linkedin':  link=`https://www.linkedin.com/sharing/share-offsite/?url=${url}`; break;
+    case 'twitter':   link=`https://twitter.com/intent/tweet?url=${url}&text=${text}`; break;
+    case 'facebook':  link=`https://www.facebook.com/sharer/sharer.php?u=${url}`; break;
+    case 'instagram': link=`https://www.instagram.com/`; break;
+    case 'whatsapp':  link=`https://wa.me/?text=${text}%20${url}`; break;
+    case 'telegram':  link=`https://t.me/share/url?url=${url}&text=${text}`; break;
+    case 'email':     link=`mailto:?subject=CIG%20%E2%80%94%20Coordinate%20International%20Global&body=${text}%0A%0A${url}`; break;
+    case 'copy':
+      const raw = window.location.href;
+      navigator.clipboard.writeText(raw).catch(()=>{
+        const t=document.createElement('textarea');t.value=raw;
+        document.body.appendChild(t);t.select();document.execCommand('copy');document.body.removeChild(t);
+      });
+      const msg = el.closest('.cig-share-drop').querySelector('.csd-copied');
+      msg.classList.add('show');
+      setTimeout(()=>msg.classList.remove('show'), 2500);
+      return;
+  }
+  if(link) window.open(link,'_blank','width=620,height=520,noopener,noreferrer');
+}
 </script>
 </body>
 </html>
-
